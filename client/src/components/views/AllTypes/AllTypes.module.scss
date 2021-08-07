@@ -1,0 +1,52 @@
+@import '../../../styles/settings.scss';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 98%;
+  margin: 20px auto;
+
+  .ad {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50vh;
+    color: $text-color;
+    margin: 20px 0;
+
+    .picture {
+      width: 100%;
+      height: 40vh;
+    }
+
+    .info {
+      background-color: $background-color;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .name {
+        text-decoration: none;
+        color: $text-color;
+        font-family: $title-font;
+        font-weight: 600;
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      .price {
+        font-size: 15px;
+        font-family: $text-font;
+        font-weight: 300;
+        margin: 5px 0;
+      }
+    }
+  }
+}

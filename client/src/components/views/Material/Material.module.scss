@@ -1,0 +1,80 @@
+@import '../../../styles/settings.scss';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  padding: 50px;
+  margin: 20px auto;
+  background-color: $layout-color;
+
+  .picture {
+    width: 40%;
+    height: 40%;
+    margin: 20px;
+  }
+
+  .description {
+    background-color: $background-color;
+    color: $text-color;
+    padding: 20px;
+
+    .title {
+      background-color: $appBar-color;
+      color: $background-color;
+      border-radius: 5px;
+      font-family: $logo-font;
+      font-weight: 500;
+      font-size: 35px;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .about {
+      font-size: 20px;
+      font-family: $text-font;
+      font-weight: 300;
+    }
+
+    .infoTwo {
+      font-family: $text-font;
+      font-weight: 300;
+      font-size: 15px;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      margin: 5px 0;
+
+      p{
+        font-family: $text-font;
+        font-weight: 300;
+        font-size: 15px;
+        margin: 0;
+        padding: 10px 30px 10px 0;
+      }
+    }
+
+    .button {
+      font-family: $text-font;
+      font-weight: 400;
+      font-size: 15px;
+      text-align: center;
+      background-color: $appBar-color;
+      border-radius: 5px;
+      color: $background-color;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 50px 0 50px 80%;
+    }
+  }
+}
