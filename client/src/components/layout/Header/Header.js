@@ -12,12 +12,12 @@ const Component = ({ className }) => {
   return (
     <div>
       <AppBar position="static" className={clsx(className, styles.appBar)}>
-          <div className={styles.tabs}>
-            <Link className ={styles.button} to={'/types'}>Pillow Types</Link>
-            <Link className ={styles.button} to={'/materials'}>Materials</Link>
-          </div>
-          <Link className ={styles.logo} to={'/'}>Dream pillow</Link>
+        <Link className ={styles.logo} to={'/'}>Dream pillow</Link>
+        <div className={styles.tabs}>
+          <Link className ={styles.button} to={'/types'}>Pillow Types</Link>
+          <Link className ={styles.button} to={'/materials'}>Materials</Link>
           <ShoppingCartIcon className={clsx(className, styles.cart)}/>
+        </div>
       </AppBar>
     </div>
   );

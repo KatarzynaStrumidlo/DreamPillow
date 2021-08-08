@@ -1,0 +1,106 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  background-color: $background-color;
+  margin-top: 40px;
+
+  .footerMenu {
+    padding: 15px 0 5px 0;
+    display: flex;
+    justify-content: center;
+
+    .menuWrapper {
+      margin: 0 10%;
+      h6 {
+        color: $title-color;
+        text-transform: uppercase;
+        font-family: $title-font;
+        font-size: 15px;
+        margin: 10px 0;
+      }
+
+      ul {
+        padding: 0;
+        list-style: none;
+        li {
+          a {
+            font-size: 12px;
+            line-height: 30px;
+            font-family: $text-font;
+            font-weight: bolder;
+            color: $text-color;
+            text-decoration: none;
+
+            &:hover {
+              color: $logo-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottomBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 5px;
+
+    .copyright {
+      p {
+        color: $title-color;
+        font-family: $title-font;
+        font-size: 14px;
+        line-height: 26px;
+      }
+    }
+
+    .socialMedia {
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: inline-block;
+          margin-left: 1rem;
+
+          a {
+            color: $title-color;
+            font-size: 20px;
+            text-decoration: none;
+
+            &:hover {
+              color: $logo-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .root {
+    .footerMenu {
+      .menuWrapper {
+        text-align: center;
+      }
+
+      .creditCards {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .root {
+    .bottomBar {
+      .socialMedia {
+        text-align: center !important;
+      }
+    }
+  }
+}
