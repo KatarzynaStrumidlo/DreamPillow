@@ -23,5 +23,11 @@ export const initialState = {
       error: false,
     },
   },
-  logged: false,
+  orders: {
+    data: [],
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
 };

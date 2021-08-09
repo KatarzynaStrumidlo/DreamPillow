@@ -27,7 +27,7 @@ const Component = ({className, type, fetchOneType}) => {
           <p className={styles.description}>{type.description}</p>
           <p className={styles.price}>Price depends on size and chosen material</p>
           <p className={styles.number}>serial number: {type._id}</p>
-
+          <Link className={styles.back} to={'/order'}>Order</Link>
         </div>
       </div>;
     </div>

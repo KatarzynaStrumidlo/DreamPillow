@@ -1,0 +1,80 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+
+  .title {
+    font-family: $title-font;
+    font-weight: 500;
+    font-size: 35px;
+    text-align: center;
+    margin: 40px 0 0 0;
+    padding: 20px 0;
+    background-color: $background-color;
+    border-bottom: $tab-color solid 2px;
+  }
+
+  .adForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $background-color;
+    padding: 10px 0 0 0;
+    margin-bottom: 40px;
+
+    .formInput {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+      font-family: $title-font;
+      color: $text-color;
+      font-weight: 300;
+      margin: 20px 0;
+      width: 90%;
+
+      input {
+        width: 80%;
+        margin-top: 10px;
+        border: $tab-color solid 1px;
+        height: 30px;
+      }
+
+      .type {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 85%;
+
+        .radio {
+          height: 18px;
+        }
+        .radioLabel {
+          font-family: $text-font;
+          font-size: 15px;
+        }
+      }
+    }
+
+    .button {
+      font-family: $title-font;
+      font-weight: 400;
+      font-size: 15px;
+      text-align: center;
+      background-color: $tab-color;
+      border: none;
+      color: $background-color;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 50px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $logo-color;
+      }
+    }
+  }
+}

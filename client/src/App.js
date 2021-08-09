@@ -14,7 +14,7 @@ import { AllTypes } from './components/views/AllTypes/AllTypes';
 import { Material } from './components/views/Material/Material';
 import { Type } from './components/views/Type/Type';
 //import { PostEdit } from './components/views/PostEdit/PostEdit';
-//import { PostAdd } from './components/views/PostAdd/PostAdd';
+import { AddOrder } from './components/views/AddOrder/AddOrder';
 import { NotFound } from './components/views/NotFound/NotFound';
 
 const theme = createMuiTheme({
@@ -34,9 +34,9 @@ const App = () => (
               <Route exact path='/' component={Homepage} />
               <Route exact path='/materials' component={AllMaterials} />
               <Route exact path='/types' component={AllTypes} />
-              {/*  <Route exact path='/material/add' component={PostAdd} /> */}
               <Route exact path='/material/:id' component={Material} />
               <Route exact path='/type/:id' component={Type} />
+              <Route exact path='/order' component={AddOrder} />
               {/* <Route exact path='/material/:id/edit' component={PostEdit} /> */}
               <Route path='*' component={NotFound} />
             </Switch>

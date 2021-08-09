@@ -6,12 +6,14 @@ import { initialState } from './initialState';
 import { reducer as materialsReducer } from './materialsRedux';
 import { reducer as examplesReducer } from './examplesRedux';
 import { reducer as typesReducer } from './typesRedux';
+import { reducer as addOrderReducer } from './addOrderRedux';
 
 // define reducers
 const reducers = {
   materials: materialsReducer,
   examples: examplesReducer,
   types: typesReducer,
+  order: addOrderReducer,
 };
 
 // add blank reducers for initial state properties without reducers
