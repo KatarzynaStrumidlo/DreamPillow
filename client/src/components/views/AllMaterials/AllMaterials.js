@@ -21,10 +21,10 @@ const Component = ({className, allMaterials, fetchPublishedPosts, loading}) => {
   return (<div className={clsx(className, styles.root)}>
     {allMaterials.map(item => (<div className={clsx(className, styles.ad)} key={item.id}>
       <Link to={`/material/${item._id}`}><img className={clsx(className, styles.picture)} src={item.picture} alt=''/></Link>
-      <div className={styles.info}>
-        <Link className={clsx(className, styles.name)} to={`/material/${item._id}`}>{item.name}</Link>
-        <p className={clsx(className, styles.price)}>Price: ${item.price}</p>
-      </div>
+      <Link className={styles.info} to= {`/material/${item._id}`}>
+        <h6 className={clsx(className, styles.name)}>{item.name}</h6>
+        <p className={clsx(className, styles.price)}>${item.price}</p>
+      </Link>
     </div>))}
   </div>)
   }

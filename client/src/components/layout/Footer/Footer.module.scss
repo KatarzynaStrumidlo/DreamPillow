@@ -32,7 +32,7 @@
             text-decoration: none;
 
             &:hover {
-              color: $logo-color;
+              color: $tab-color;
             }
           }
         }
@@ -48,7 +48,7 @@
 
     .copyright {
       p {
-        color: $title-color;
+        color: $text-color;
         font-family: $title-font;
         font-size: 14px;
         line-height: 26px;
@@ -56,25 +56,22 @@
     }
 
     .socialMedia {
+      margin-right: 5%;
+      .icon {
+        font-size: 10px;
+        background: $logo-color;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        color: $background-color;
+        border-radius: 50%;
+        text-decoration: none;
 
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-
-        li {
-          display: inline-block;
-          margin-left: 1rem;
-
-          a {
-            color: $title-color;
-            font-size: 20px;
-            text-decoration: none;
-
-            &:hover {
-              color: $logo-color;
-            }
-          }
+        &:hover {
+          width: 35px;
+          height: 35px;
+          line-height: 35px;
+          font-size: 15px;
         }
       }
     }

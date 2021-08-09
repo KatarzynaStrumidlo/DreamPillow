@@ -20,11 +20,10 @@ const Component = ({className, allTypes, fetchTypes, loading}) => {
   else {
   return (<div className={clsx(className, styles.root)}>
     {allTypes.map(item => (<div className={clsx(className, styles.ad)} key={item.id}>
-    <Link to={`/material/${item._id}`}><img className={clsx(className, styles.picture)} src={item.picture} alt=''/></Link>
-      <div className={styles.info}>
-        <Link className={clsx(className, styles.name)} to={`/material/${item._id}`}>{item.name}</Link>
-        {/*<p className={clsx(className, styles.price)}>Price: ${item.price}</p>*/}
-      </div>
+    <Link to={`/type/${item._id}`}><img className={clsx(className, styles.picture)} src={item.picture} alt=''/></Link>
+      <Link className={styles.info} to={`/type/${item._id}`}>
+        <h6 className={clsx(className, styles.name)}>{item.name}</h6>
+      </Link>
     </div>))}
   </div>)
   }

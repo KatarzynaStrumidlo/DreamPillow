@@ -12,6 +12,7 @@ import { Homepage } from './components/views/Homepage/Homepage';
 import { AllMaterials } from './components/views/AllMaterials/AllMaterials';
 import { AllTypes } from './components/views/AllTypes/AllTypes';
 import { Material } from './components/views/Material/Material';
+import { Type } from './components/views/Type/Type';
 //import { PostEdit } from './components/views/PostEdit/PostEdit';
 //import { PostAdd } from './components/views/PostAdd/PostAdd';
 import { NotFound } from './components/views/NotFound/NotFound';
@@ -35,6 +36,7 @@ const App = () => (
               <Route exact path='/types' component={AllTypes} />
               {/*  <Route exact path='/material/add' component={PostAdd} /> */}
               <Route exact path='/material/:id' component={Material} />
+              <Route exact path='/type/:id' component={Type} />
               {/* <Route exact path='/material/:id/edit' component={PostEdit} /> */}
               <Route path='*' component={NotFound} />
             </Switch>

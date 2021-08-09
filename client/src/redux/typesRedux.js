@@ -47,7 +47,7 @@ export const fetchPublished = () => {
   };
 };
 
-export const fetchOneMaterial = (id) => {
+export const fetchOneType = (id) => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
 

@@ -51,27 +51,13 @@ const Component = ({ className, children }) => (
       </div>
     </div>
     <div className={styles.bottomBar}>
-      <div className={styles.socialMedia}>
-        <ul>
-          <li>
-            <Link to='/#'>
-              <FontAwesomeIcon icon={faFacebookF}>Facebook</FontAwesomeIcon>
-            </Link>
-          </li>
-          <li>
-            <Link to='/#'>
-              <FontAwesomeIcon icon={faYoutube}>YouTube</FontAwesomeIcon>
-            </Link>
-          </li>
-          <li>
-            <Link to='/#'>
-              <FontAwesomeIcon icon={faPinterestP}>Pinterest</FontAwesomeIcon>
-            </Link>
-          </li>
-        </ul>
-      </div>
       <div className={styles.copyright}>
         <p>©Copyright 2021 Dream Pillow | All Rights Reserved</p>
+      </div>
+      <div className={styles.socialMedia}>
+        <Link to='/#'>
+          <FontAwesomeIcon className={styles.icon} icon={faFacebookF}>Facebook</FontAwesomeIcon>
+        </Link>
       </div>
     </div>
   </footer>
