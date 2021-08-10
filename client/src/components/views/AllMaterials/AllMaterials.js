@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getAll, fetchPublished } from '../../../redux/materialsRedux';
+import { getAll, fetchAllMaterials } from '../../../redux/materialsRedux';
 
 import styles from './AllMaterials.module.scss';
 
-const Component = ({className, allMaterials, fetchPublishedPosts, loading}) => {
+const Component = ({className, allMaterials, fetchAllMaterials, loading}) => {
 
   useEffect(() => {
-    fetchPublishedPosts();
+    fetchAllMaterials();
   }, []);
 
   if(loading.active) return (<div>Loading...</div>)
@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPublishedPosts: () => dispatch(fetchPublished()),
+  fetchAllMaterials: () => dispatch(fetchAllMaterials()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -7,14 +7,16 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { connect } from 'react-redux';
 import { getAll, addOrder } from '../../../redux/addOrderRedux';
-import { getAll as getTypes, fetchPublished } from '../../../redux/typesRedux';
+import { getAll as getTypes, fetchAllTypes } from '../../../redux/typesRedux';
+import { getAll as getMaterials, fetchAllMaterials } from '../../../redux/materialsRedux';
 
 import styles from './AddOrder.module.scss';
 
-const Component = ({className, addOrder, fetchTypes, allTypes}) => {
+const Component = ({ className, addOrder, fetchTypes, allTypes, fetchMaterials, allMaterials }) => {
 
   useEffect(() => {
     fetchTypes();
+    fetchMaterials();
   }, []);
 
   const [order, setOrder] = useState(
@@ -70,19 +72,29 @@ const Component = ({className, addOrder, fetchTypes, allTypes}) => {
     <div className={clsx(className, styles.root)}>
       <h2 className={styles.title}>Add new order</h2>
       <form className={styles.adForm} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
-        <label className={styles.formInput}>
+        <label className={styles.formInputMaterial}>
           Pillow type
-          <div className={styles.type}>
+          <div className={styles.material}>
             {allTypes.map(item => (
-              <div className={styles.inType} key={item.id}>
+              <div className={styles.inMaterial} key={item.id}>
                 <input className={styles.radio} type="radio" id={item.name} name="type" value={item.name} onChange={handleChange} />
-                <label className={styles.radioLabel} for={item.name}>{item.name}</label>
+                <label className={styles.radioLabel} for={item.name}>{item.name} ${item.price}</label>
+                <img src={item.picture} />
               </div>
             ))}
           </div>
         </label>
-        <label className={styles.formInput}>
-          Pillow material<input type="text" name="material" onChange={handleChange}></input>
+        <label className={styles.formInputMaterial}>
+          Pillow material
+          <div className={styles.material}>
+            {allMaterials.map(item => (
+              <div className={styles.inMaterial} key={item.id}>
+                <input className={styles.radio} type="radio" id={item.name} name="material" value={item.name} onChange={handleChange} />
+                <label className={styles.radioLabel} for={item.name}>{item.name} ${item.price}</label>
+                <img src={item.picture} />
+              </div>
+            ))}
+          </div>
         </label>
         <label className={styles.formInput}>
           Price<input type="text" name="content" value={'$350'} onChange={handleChange}></input>
@@ -122,10 +134,12 @@ Component.propTypes = {
 const mapStateToProps = state => ({
   allOrders: getAll(state),
   allTypes: getTypes(state),
+  allMaterials: getMaterials(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTypes: () => dispatch(fetchPublished()),
+  fetchTypes: () => dispatch(fetchAllTypes()),
+  fetchMaterials: () => dispatch(fetchAllMaterials()),
   addOrder: (order) => dispatch(addOrder(order)),
 });
 

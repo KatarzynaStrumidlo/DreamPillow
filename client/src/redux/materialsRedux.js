@@ -26,7 +26,7 @@ export const fetchSuccessSingle = payload => ({ payload, type: FETCH_SUCCESS_SIN
 // export const editPost = payload => ({payload, type: EDIT_POST});
 
 /* thunk creators */
-export const fetchPublished = () => {
+export const fetchAllMaterials = () => {
   return (dispatch, getState) => {
 
     const state = getState();

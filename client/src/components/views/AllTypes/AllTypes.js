@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getAll, fetchPublished } from '../../../redux/typesRedux';
+import { getAll, fetchAllTypes } from '../../../redux/typesRedux';
 
 import styles from './AllTypes.module.scss';
 
@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTypes: () => dispatch(fetchPublished()),
+  fetchTypes: () => dispatch(fetchAllTypes()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
