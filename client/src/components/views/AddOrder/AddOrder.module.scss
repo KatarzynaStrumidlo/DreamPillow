@@ -6,17 +6,18 @@
   text-align: center;
 
   .title {
-    font-family: $title-font;
-    font-weight: 500;
-    font-size: 35px;
+    font-family: $logo-font;
+    font-weight: 600;
+    font-size: 40px;
     text-align: center;
     margin: 40px 0 0 0;
-    padding: 20px 0;
+    padding: 40px;
+    color: $logo-color;
     background-color: $background-color;
-    border-bottom: $tab-color solid 2px;
+    //border-bottom: $tab-color solid 1px;
   }
 
-  .adForm {
+  .addForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +25,20 @@
     padding: 10px 0 0 0;
     margin-bottom: 40px;
 
-    .formInput, .formInputMaterial {
+    h4 {
+      font-family: $title-font;
+      font-size: 20px;
+      color: $title-color;
+      margin: 5px;
+      margin-top: 20px;
+      padding: 0;
+      width: 70%;
+      text-align: left;
+      font-weight: lighter;
+      border-bottom: $tab-color solid 1px;
+    }
+
+    .formInputMaterial {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -33,48 +47,105 @@
       font-family: $title-font;
       color: $text-color;
       font-weight: 300;
-      margin: 20px 0;
+      margin: 20px auto;
       width: 90%;
+      align-items: flex-start;
 
-      input {
-        width: 80%;
-        margin-top: 10px;
-        border: $tab-color solid 1px;
-        height: 30px;
+      .material {
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 85%;
+
+        .inMaterial {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          margin: 0 8px;
+          width: 18%;
+
+          .radio {
+            height: 18px;
+          }
+          .radioLabel {
+            font-family: $title-font;
+            font-size: 14px;
+          }
+
+          img {
+            width: 15vh;
+            height: 15vh;
+          }
+        }
       }
     }
 
-    .formInputMaterial {
-      align-items: flex-start;
+    input {
+      background-color: $background-color;
+      border: none;
+      height: 30px;
+      outline: none;
+      margin-left: 10px;
+      font-family: $title-font;
+      font-size: 20px;
+      color: $text-color;
+    }
 
-    .material {
+    .formInput {
+      margin-top: 10px;
+      padding-left: 5px;
+      text-align: left;
+      border-bottom: $tab-color solid 1px;
+      color: $text-color;
+    }
+
+    .icon {
+      height: 20px;
+      width: 20px;
+    }
+
+    .formInput {
+      margin: 15px 0;
+    }
+
+    .person {
+      margin-top: 50px;
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      width: 85%;
+      width: 75%;
+      flex-direction: column;
 
-      .inMaterial {
+      .personName {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: space-between;
-        margin: 0 8px;
-        width: 18%;
 
-        .radio {
-          height: 18px;
-        }
-        .radioLabel {
-          font-family: $text-font;
-          font-size: 15px;
-        }
-
-        img {
-          width: 10vh;
-          height: 10vh;
+        .formInput {
+          width: 48%;
         }
       }
-    }}
+    }
+
+    .addres {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      margin-top: 40px;
+
+      .street {
+        display: flex;
+        justify-content: space-between;
+
+        .formInput {
+          width: 48%;
+        }
+      }
+
+      .city {
+        display: flex;
+        flex-direction: column;
+      }
+    }
 
     .button {
       font-family: $title-font;

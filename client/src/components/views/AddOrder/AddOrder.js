@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faPhone, faRoad, faMapPin, faMailBulk, faCity } from '@fortawesome/free-solid-svg-icons';
+import { faUser as user, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
@@ -70,10 +73,10 @@ const Component = ({ className, addOrder, fetchTypes, allTypes, fetchMaterials, 
 
   return (
     <div className={clsx(className, styles.root)}>
-      <h2 className={styles.title}>Add new order</h2>
-      <form className={styles.adForm} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
+      <h2 className={styles.title}>Order Your Dream Pillow</h2>
+      <form className={styles.addForm} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
+        <h4>Pillow type</h4>
         <label className={styles.formInputMaterial}>
-          Pillow type
           <div className={styles.material}>
             {allTypes.map(item => (
               <div className={styles.inMaterial} key={item.id}>
@@ -84,8 +87,8 @@ const Component = ({ className, addOrder, fetchTypes, allTypes, fetchMaterials, 
             ))}
           </div>
         </label>
+        <h4>Material</h4>
         <label className={styles.formInputMaterial}>
-          Pillow material
           <div className={styles.material}>
             {allMaterials.map(item => (
               <div className={styles.inMaterial} key={item.id}>
@@ -96,30 +99,48 @@ const Component = ({ className, addOrder, fetchTypes, allTypes, fetchMaterials, 
             ))}
           </div>
         </label>
-        <label className={styles.formInput}>
-          Price<input type="text" name="content" value={'$350'} onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          First name<input type="text" name="firstName" onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          Last name<input type="text" name="lastName" onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          Email<input type="email" name="email" onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          Phone<input className={styles.formInput} type="text" name="phone" onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          Street<input className={styles.formInput} type="text" name="street" onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          Town<input className={styles.formInput} type="text" name="town" onChange={handleChange}></input>
-        </label>
-        <label className={styles.formInput}>
-          Post Code<input className={styles.formInput} type="text" name="postCode" onChange={handleChange}></input>
-        </label>
+        <div className={styles.person}>
+          <div className={styles.personName}>
+            <label className={styles.formInput}>
+              <FontAwesomeIcon icon={faUser} className={styles.icon}/>
+              <input type="text" name="firstName" placeholder="Name" onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+            <FontAwesomeIcon icon={user} className={styles.icon}/>
+              <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange}></input>
+            </label>
+          </div>
+          <label className={styles.formInput}>
+            <FontAwesomeIcon icon={faEnvelope} className={styles.icon}/>
+            <input type="email" name="email" placeholder="E-mail" onChange={handleChange}></input>
+          </label>
+          <label className={styles.formInput}>
+            <FontAwesomeIcon icon={faPhone} className={styles.icon}/>
+            <input type="text" name="phone" placeholder="Phone number" onChange={handleChange}></input>
+          </label>
+        </div>
+        <div className={styles.addres}>
+          <div className={styles.street}>
+            <label className={styles.formInput}>
+            <FontAwesomeIcon icon={faRoad} className={styles.icon}/>
+              <input type="text" name="street" placeholder="Street" onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+              <FontAwesomeIcon icon={faMapPin} className={styles.icon}/>
+              <input type="text" name="houseNumber" placeholder="House number" onChange={handleChange}></input>
+            </label>
+          </div>
+          <div className={styles.city}>
+            <label className={styles.formInput}>
+              <FontAwesomeIcon icon={faCity} className={styles.icon}/>
+              <input type="text" name="city" placeholder="City" onChange={handleChange}></input>
+            </label>
+            <label className={styles.formInput}>
+              <FontAwesomeIcon icon={faMailBulk} className={styles.icon}/>
+              <input type="text" name="postCode" placeholder="Post code" onChange={handleChange}></input>
+            </label>
+          </div>
+        </div>
         <button className={styles.button} type="submit">Order</button>
       </form>
     </div>

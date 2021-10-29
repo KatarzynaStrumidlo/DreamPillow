@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTwitter,
-  faFacebookF,
-  faYoutube,
-  faGooglePlusG,
-  faLinkedinIn,
-  faPinterestP,
-} from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
 const Component = ({ className, children }) => (
   <footer className={styles.root}>
