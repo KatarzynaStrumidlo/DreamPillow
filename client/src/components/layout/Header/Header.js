@@ -16,7 +16,7 @@ const Component = ({ className }) => {
         <div className={styles.tabs}>
           <Link className ={styles.button} to={'/types'}>Pillow Types</Link>
           <Link className ={styles.button} to={'/materials'}>Materials</Link>
-          <ShoppingCartIcon className={clsx(className, styles.cart)}/>
+          <Link to={'/cart'}><ShoppingCartIcon className={clsx(className, styles.cart)} /></Link>
         </div>
       </AppBar>
     </div>

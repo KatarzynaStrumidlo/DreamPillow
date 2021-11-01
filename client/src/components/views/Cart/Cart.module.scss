@@ -1,0 +1,64 @@
+@import '../../../styles/settings.scss';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.root {
+  margin: auto;
+  width: 60%;
+  margin-top: 50px;
+  border-top: $tab-color solid 1px;
+}
+
+.cartProduct {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 5px 0 10px 0;
+  margin: 5px auto;
+  border-bottom:  $tab-color solid 1px;
+
+  .delete {
+    color: $tab-color;
+    padding: 0 10px 0 5px;
+    font-size: 40px;
+
+    &:hover {
+      color: $logo-color;
+      cursor: pointer;
+    }
+  }
+
+  .picture {
+    width: 10%;
+    height: 10%;
+  }
+
+  .description {
+    padding: 5px 10px;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .title, .price, .number {
+      font-size: 15px;
+      font-family: $text-font;
+      color: $text-color;
+      margin-left: 70px;
+      padding-left: 5px;
+    }
+
+    .title {
+      margin-left: 5px;
+    }
+  }
+}
+
+.total {
+  text-align: end;
+  font-family: $text-font;
+  font-size: 15px;
+}
