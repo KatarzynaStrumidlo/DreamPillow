@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 
@@ -21,7 +21,7 @@ const Component = ({className, allTypes, fetchTypes, loading}) => {
   return (<div className={clsx(className, styles.root)}>
     {allTypes.map(item => (<div className={clsx(className, styles.ad)} key={item.id}>
     <Link to={`/type/${item._id}`}><img className={clsx(className, styles.picture)} src={item.picture} alt=''/></Link>
-      <Link className={styles.info} to={`/type/${item._id}`}>
+      <Link className={clsx(className, styles.info)} to={`/type/${item._id}`}>
         <h6 className={clsx(className, styles.name)}>{item.name}</h6>
       </Link>
     </div>))}
@@ -30,7 +30,6 @@ const Component = ({className, allTypes, fetchTypes, loading}) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
 };
 

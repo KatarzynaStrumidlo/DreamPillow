@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import clsx from 'clsx';
 import styles from './Footer.module.scss';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
-const Component = ({ className, children }) => (
-  <footer className={styles.root}>
-    <div className={styles.footerMenu}>
-      <div className={styles.menuWrapper}>
+const Component = ({ className }) => (
+  <footer className={clsx(className, styles.root)}>
+    <div className={clsx(className, styles.footerMenu)}>
+      <div className={clsx(className,styles.menuWrapper)}>
         <h6>Information</h6>
         <ul>
           <li>
@@ -25,7 +28,7 @@ const Component = ({ className, children }) => (
           </li>
         </ul>
       </div>
-      <div className={styles.menuWrapper}>
+      <div className={clsx(className, styles.menuWrapper)}>
         <h6>Orders</h6>
         <ul>
           <li>
@@ -43,13 +46,13 @@ const Component = ({ className, children }) => (
         </ul>
       </div>
     </div>
-    <div className={styles.bottomBar}>
-      <div className={styles.copyright}>
+    <div className={clsx(className, styles.bottomBar)}>
+      <div className={clsx(className, styles.copyright)}>
         <p>©Copyright 2021 Dream Pillow | All Rights Reserved</p>
       </div>
-      <div className={styles.socialMedia}>
+      <div className={clsx(className, styles.socialMedia)}>
         <Link to='/#'>
-          <FontAwesomeIcon className={styles.icon} icon={faFacebookF}>Facebook</FontAwesomeIcon>
+          <FontAwesomeIcon className={clsx(className, styles.icon)} icon={faFacebookF}>Facebook</FontAwesomeIcon>
         </Link>
       </div>
     </div>
@@ -57,7 +60,7 @@ const Component = ({ className, children }) => (
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 export {

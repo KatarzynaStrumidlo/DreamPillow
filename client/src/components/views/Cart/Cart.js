@@ -19,24 +19,24 @@ const Component = ({className, material, fetchOneMaterial}) => {
   return (
     <div className={styles.root}>
       <div className={clsx(className, styles.cartProduct)}>
-        <HighlightOffIcon className={styles.delete} />
-        <img className={styles.picture} src='https://cdn.pixabay.com/photo/2017/02/16/10/51/pillow-2071096_960_720.jpg' alt='' />
-        <div className={styles.description}>
-          <p className={styles.title}>Some product</p>
-          <p className={styles.number}>serial number: {material._id}</p>
-          <p className={styles.price}>price: ${material.price}</p>
+        <HighlightOffIcon className={clsx(className, styles.delete)} />
+        <img className={clsx(className, styles.picture)} src='https://cdn.pixabay.com/photo/2017/02/16/10/51/pillow-2071096_960_720.jpg' alt='' />
+        <div className={clsx(className, styles.description)}>
+          <p className={clsx(className, styles.title)}>Some product</p>
+          <p className={clsx(className, styles.number)}>serial number: {material._id}</p>
+          <p className={clsx(className, styles.price)}>price: ${material.price}</p>
         </div>
       </div>
       <div className={clsx(className, styles.cartProduct)}>
-        <HighlightOffIcon className={styles.delete} />
-        <img className={styles.picture} src='https://cdn.pixabay.com/photo/2017/02/16/10/51/pillow-2071096_960_720.jpg' alt='' />
-        <div className={styles.description}>
-          <p className={styles.title}>Some product</p>
-          <p className={styles.number}>serial number: {material._id}</p>
-          <p className={styles.price}>price: ${material.price}</p>
+        <HighlightOffIcon className={clsx(className, styles.delete)} />
+        <img className={clsx(className, styles.picture)} src='https://cdn.pixabay.com/photo/2017/02/16/10/51/pillow-2071096_960_720.jpg' alt='' />
+        <div className={clsx(className, styles.description)}>
+          <p className={clsx(className, styles.title)}>Some product</p>
+          <p className={clsx(className, styles.number)}>serial number: {material._id}</p>
+          <p className={clsx(className, styles.price)}>price: ${material.price}</p>
         </div>
       </div>
-      <div className={styles.total}>
+      <div className={clsx(className, styles.total)}>
         <p>Total price: $</p>
       </div>
     </div>
@@ -44,7 +44,6 @@ const Component = ({className, material, fetchOneMaterial}) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
 };
 

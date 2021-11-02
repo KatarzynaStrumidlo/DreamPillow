@@ -20,12 +20,12 @@ const Component = ({className, material, fetchOneMaterial}) => {
   return (
     <div>
       <div className={clsx(className, styles.root)}>
-        <img className={styles.picture} src={material.picture} alt='' />
-        <div className={styles.description}>
-          <Link className={styles.back} to={'/materials'}><ArrowBackIosIcon /></Link>
-          <h3 className={styles.title}>{material.name}</h3>
-          <p className={styles.price}>price: ${material.price} each linear metre</p>
-          <p className={styles.number}>serial number: {material._id}</p>
+        <img className={clsx(className, styles.picture)} src={material.picture} alt='' />
+        <div className={clsx(className, styles.description)}>
+          <Link className={clsx(className, styles.back)} to={'/materials'}><ArrowBackIosIcon /></Link>
+          <h3 className={clsx(className, styles.title)}>{material.name}</h3>
+          <p className={clsx(className, styles.price)}>price: ${material.price} each linear metre</p>
+          <p className={clsx(className, styles.number)}>serial number: {material._id}</p>
         </div>
       </div>;
     </div>
@@ -33,7 +33,6 @@ const Component = ({className, material, fetchOneMaterial}) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
 };
 

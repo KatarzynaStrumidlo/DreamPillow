@@ -1,8 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-//import Toolbar from '@material-ui/core/Toolbar';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import clsx from 'clsx';
 import styles from './Header.module.scss';
@@ -10,23 +11,22 @@ import styles from './Header.module.scss';
 const Component = ({ className }) => {
 
   return (
-    <div>
-      <AppBar position="static" className={clsx(className, styles.appBar)}>
-        <Link className ={styles.logo} to={'/'}>Dream pillow</Link>
-        <div className={styles.tabs}>
-          <Link className ={styles.button} to={'/types'}>Pillow Types</Link>
-          <Link className ={styles.button} to={'/materials'}>Materials</Link>
-          <Link to={'/cart'}><ShoppingCartIcon className={clsx(className, styles.cart)} /></Link>
+    <div className= {clsx(className, styles.root)}>
+      <nav className={clsx(className, styles.appBar)}>
+        <Link className ={clsx(className,styles.logo)} to={'/'}>Dream pillow</Link>
+        <div className={clsx(className,styles.tabs)}>
+          <Link className ={clsx(className,styles.button)} to={'/types'}>Pillow Types</Link>
+          <Link className ={clsx(className,styles.button)} to={'/materials'}>Materials</Link>
+          <Link to={'/cart'}><FontAwesomeIcon icon={faShoppingCart} className={clsx(className, styles.cart)}/></Link>
         </div>
-      </AppBar>
+      </nav>
     </div>
   );
 }
 
-// Component.propTypes = {
-//   children: PropTypes.node,
-//   className: PropTypes.string,
-// };
+Component.propTypes = {
+  className: PropTypes.string,
+};
 
 export {
   Component as Header,

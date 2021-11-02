@@ -20,14 +20,14 @@ const Component = ({className, type, fetchOneType}) => {
   return (
     <div>
       <div className={clsx(className, styles.root)} key={type.id}>
-        <img className={styles.picture} src={type.picture} alt='' />
-        <div className={styles.description}>
-          <Link className={styles.back} to={'/types'}><ArrowBackIosIcon /></Link>
-          <h3 className={styles.title}>{type.name}</h3>
-          <p className={styles.description}>{type.description}</p>
-          <p className={styles.price}>Price depends on size and chosen material</p>
-          <p className={styles.number}>serial number: {type._id}</p>
-          <Link className={styles.back} to={'/order'}>Order</Link>
+        <img className={clsx(className, styles.picture)} src={type.picture} alt='' />
+        <div className={clsx(className, styles.description)}>
+          <Link className={clsx(className, styles.back)} to={'/types'}><ArrowBackIosIcon /></Link>
+          <h3 className={clsx(className, styles.title)}>{type.name}</h3>
+          <p className={clsx(className, styles.description)}>{type.description}</p>
+          <p className={clsx(className, styles.price)}>Price depends on size and chosen material</p>
+          <p className={clsx(className, styles.number)}>serial number: {type._id}</p>
+          <Link className={clsx(className, styles.back)} to={'/order'}>Order</Link>
         </div>
       </div>;
     </div>
@@ -35,7 +35,6 @@ const Component = ({className, type, fetchOneType}) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
 };
 

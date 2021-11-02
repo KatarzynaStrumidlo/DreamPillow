@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 
@@ -31,7 +31,6 @@ const Component = ({className, allMaterials, fetchAllMaterials, loading}) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
 };
 

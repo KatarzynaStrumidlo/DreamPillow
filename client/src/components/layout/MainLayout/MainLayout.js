@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
-import {Header} from '../Header/Header';
-import {Footer} from '../Footer/Footer';
+import { Header } from '../Header/Header';
+import { Footer } from '../Footer/Footer';
 
+import clsx from 'clsx';
 import styles from './MainLayout.module.scss';
 
 const Component = ({className, children}) => (

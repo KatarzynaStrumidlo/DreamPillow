@@ -26,7 +26,6 @@ const Component = ({className, allProducts, fetchPublished, loading}) => {
 };
 
 Component.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
 };
 
