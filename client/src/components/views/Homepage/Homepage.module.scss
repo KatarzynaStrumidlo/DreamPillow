@@ -4,15 +4,66 @@
   box-sizing: border-box;
 }
 
-.root {
+.header {
+  text-align: center;
+  margin: auto;
+  height: 60vh;
+
+  .title {
+    font-family: $logo-font;
+    letter-spacing: 5px;
+    font-size: 100px;
+    margin: 50px;
+    color: $title-color;
+  }
+
+  .description {
+    font-family: $title-font;
+    font-size: 30px;
+    width: 70%;
+    margin: 0 auto 50px auto;
+    color: $text-color;
+  }
+}
+
+.mainPainting {
+  margin: 70px auto;
+
+  img {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+.about {
+  width: 60%;
+  margin: auto;
+
+  h3 {
+    font-family: $title-font;
+    color: $title-color;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  p {
+    font-family: $text-font;
+    color: $text-color;
+    font-size: 20px;
+    text-align: justify;
+  }
+}
+
+
+.gallery {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 98%;
+  width: 100%;
   margin: 10px auto;
 
   .picture {
-    width: 25%;
-    height: 40vh;
+    width: 100%;
+    height: 70vh;
   }
 }

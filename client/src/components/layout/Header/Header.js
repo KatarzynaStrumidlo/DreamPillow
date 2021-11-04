@@ -15,7 +15,7 @@ const Component = ({ className }) => {
   return (
     <div className= {clsx(className, styles.root)}>
       <nav className={clsx(className, styles.appBar)}>
-        <Link className ={clsx(className,styles.logo1)} to={'/'}><img src={`${API_URL}images/logo.png`} alt='' /></Link>
+        <Link className ={clsx(className,styles.logo)} to={'/'}><img src={`${API_URL}images/logo.png`} alt='' /></Link>
         <div className={clsx(className,styles.tabs)}>
           <Link className ={clsx(className,styles.button)} to={'/paintings'}>Paintings</Link>
           <Link className ={clsx(className,styles.button)} to={'/authors'}>Authors</Link>
