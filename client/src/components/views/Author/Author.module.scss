@@ -10,19 +10,18 @@
   align-items: center;
   width: 100%;
   padding: 20px 0 0 0;
-  margin: 5px auto;
+  margin: 5px auto 100px auto;
 
   .picture {
-    width: 70%;
-    height: 70%;
+    width: 50%;
+    height: 50%;
     margin: 20px;
   }
 
   .description {
-    background-color: $background-color;
     padding: 10px;
     padding-bottom: 25px;
-    width: 70%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,21 +29,18 @@
     .title {
       color: $title-color;
       font-family: $title-font;
-      font-size: 25px;
+      font-size: 30px;
       text-align: center;
       margin: 5px 0;
     }
 
-    .price, .number {
-      margin: 0 10px 10px 0;
+    .about {
+      margin: 20px 10px 10px 0;
+      text-align: justify;
+      width: 90%;
       font-size: 15px;
       font-family: $text-font;
       color: $text-color;
-    }
-
-    .number {
-      font-size: 12px;
-      align-self: flex-end;
     }
 
     .back {

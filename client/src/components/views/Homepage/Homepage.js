@@ -7,17 +7,19 @@ import { API_URL } from '../../../config';
 import Carousel, { autoplayPlugin } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 
+import { AllAuthors } from '../AllAuthors/AllAuthors';
+
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getAll, fetchPublished } from '../../../redux/examplesRedux';
+import { getAll, fetchAllPaintings } from '../../../redux/paintingsRedux.js';
 
 import styles from './Homepage.module.scss';
 
-const Component = ({className, allProducts, fetchPublished, loading}) => {
+const Component = ({className, allPaintings, fetchAllPaintings, loading}) => {
 
   useEffect(() => {
-    fetchPublished();
+    fetchAllPaintings();
   }, []);
 
   if(loading.active) return (<div>Loading...</div>)
@@ -45,12 +47,15 @@ const Component = ({className, allProducts, fetchPublished, loading}) => {
         }
       },
     ]}
-      animationSpeed={1000}>
-        {allProducts.map(item => (
-          <img key={item.id} className={clsx(className, styles.picture)} src={item.picture} alt=''/>
+      animationSpeed={900}>
+        {allPaintings.map(item => (
+          <img key={item.id} className={clsx(className, styles.picture)} src={`${API_URL}images/${item.picture}`} alt=''/>
         ))}
     </Carousel>
-
+    <div className={styles.authors}>
+      <h3>Our Artists</h3>
+      <AllAuthors />
+    </div>
     </div>
   </div>)
   }
@@ -61,12 +66,12 @@ Component.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  allProducts: getAll(state),
+  allPaintings: getAll(state),
   loading: state.examples.loading
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPublished: () => dispatch(fetchPublished()),
+  fetchAllPaintings: () => dispatch(fetchAllPaintings()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

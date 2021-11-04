@@ -4,6 +4,20 @@
   box-sizing: border-box;
 }
 
+h3 {
+  font-family: $title-font;
+  color: $title-color;
+  text-align: center;
+  font-size: 30px;
+}
+
+p {
+  font-family: $text-font;
+  color: $text-color;
+  font-size: 20px;
+  text-align: justify;
+}
+
 .header {
   text-align: center;
   margin: auto;
@@ -27,7 +41,7 @@
 }
 
 .mainPainting {
-  margin: 70px auto;
+  margin: 60px auto;
 
   img {
     width: 100%;
@@ -37,21 +51,7 @@
 
 .about {
   width: 60%;
-  margin: auto;
-
-  h3 {
-    font-family: $title-font;
-    color: $title-color;
-    text-align: center;
-    font-size: 30px;
-  }
-
-  p {
-    font-family: $text-font;
-    color: $text-color;
-    font-size: 20px;
-    text-align: justify;
-  }
+  margin: 200px auto;
 }
 
 
@@ -64,6 +64,10 @@
 
   .picture {
     width: 100%;
-    height: 70vh;
+    height: 90vh;
   }
+}
+
+.authors {
+  margin: 150px auto 50px auto;
 }

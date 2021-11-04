@@ -10,7 +10,7 @@
   align-items: center;
   width: 100%;
   padding: 20px 0 0 0;
-  margin: 5px auto;
+  margin: 10px auto 100px auto;
 
   .picture {
     width: 70%;
@@ -19,7 +19,6 @@
   }
 
   .description {
-    background-color: $background-color;
     padding: 10px;
     padding-bottom: 25px;
     width: 70%;
@@ -34,7 +33,7 @@
       margin: 5px 0;
     }
 
-    .price, .description, .number {
+    .price, .description {
       margin: 0 10px 10px 0;
       font-size: 15px;
       font-family: $text-font;
@@ -43,13 +42,12 @@
       text-align: center;
     }
 
-    .number {
+    .price {
       align-self: flex-end;
-      margin-top: 30px;
-      font-size: 13px;
+      margin-right: 30px;
     }
 
-    .back {
+    .back, .order {
       color: $tab-color;
       text-decoration: none;
       font-size: large;
@@ -59,6 +57,13 @@
       &:hover {
         color: $logo-color;
       }
+    }
+
+    .order {
+      width: 15%;
+      margin-right: 30px;
+      text-align: end;
+      align-self: flex-end;
     }
   }
 }

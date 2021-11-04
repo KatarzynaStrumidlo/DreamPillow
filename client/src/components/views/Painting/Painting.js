@@ -20,18 +20,15 @@ const Component = ({className, painting, fetchOnePainting}) => {
   }, []);
 
   return (
-    <div>
-      <div className={clsx(className, styles.root)} key={painting.id}>
-        <img className={clsx(className, styles.picture)} src={`${API_URL}images/${painting.picture}`} alt='' />
-        <div className={clsx(className, styles.description)}>
-          <Link className={clsx(className, styles.back)} to={'/paintings'}><ArrowBackIosIcon /></Link>
-          <h3 className={clsx(className, styles.title)}>{painting.title}</h3>
-          <p className={clsx(className, styles.description)}>{painting.description}</p>
-          <p className={clsx(className, styles.price)}>Price depends on size and chosen material</p>
-          <p className={clsx(className, styles.number)}>serial number: {painting._id}</p>
-          <Link className={clsx(className, styles.back)} to={'/order'}>Order</Link>
-        </div>
-      </div>;
+    <div className={clsx(className, styles.root)} key={painting.id}>
+      <img className={clsx(className, styles.picture)} src={`${API_URL}images/${painting.picture}`} alt='' />
+      <div className={clsx(className, styles.description)}>
+        <Link className={clsx(className, styles.back)} to={'/paintings'}><ArrowBackIosIcon /></Link>
+        <h3 className={clsx(className, styles.title)}>{painting.title}</h3>
+        <p className={clsx(className, styles.description)}>{painting.description}</p>
+        <p className={clsx(className, styles.price)}>$ {painting.price}</p>
+        <Link className={clsx(className, styles.order)} to={'/order'}>Add to cart</Link>
+      </div>
     </div>
   )
 };
