@@ -10,65 +10,63 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { connect } from 'react-redux';
 import { getAll, addOrder } from '../../../redux/addOrderRedux';
-import { getAll as getTypes, fetchAllTypes } from '../../../redux/typesRedux';
+import { getAll as getPaintings, fetchAllPaintings } from '../../../redux/paintingsRedux';
 import { getAll as getMaterials, fetchAllMaterials } from '../../../redux/materialsRedux';
 
 import styles from './AddOrder.module.scss';
 
-const Component = ({ className, addOrder, fetchTypes, allTypes, fetchMaterials, allMaterials }) => {
+const Component = ({ className, addOrder, fetchPaintings, allPaintings, fetchMaterials, allMaterials, allOrders }) => {
 
   useEffect(() => {
-    fetchTypes();
+    fetchPaintings();
     fetchMaterials();
   }, []);
 
-  const [order, setOrder] = useState(
-    {
-      id: '',
-      type: '',
-      material: '',
-      size: '',
-      price: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      street: '',
-      town: '',
-      postCode: '',
-      orderDate: ''
-    }
-  );
+  //const [order, setOrder] = useState(allOrders
+    // {
+    //   orderNumber: '',
+    //   type: '',
+    //   material: '',
+    //   price: '',
+    //   firstName: '',
+    //   lastName: '',
+    //   email: '',
+    //   phone: '',
+    //   street: '',
+    //   city: '',
+    //   postCode: '',
+    //   orderDate: ''
+    // }
+  //);
+  const [order, setOrder] = useState(allOrders);
 
   const handleChange = (event) => {
-    setOrder({ ...order, [event.target.name]: event.target.value })
+    setOrder({...order, [event.target.name]: event.target.value})
     console.log(order);
   }
 
   const submitForm = (event) => {
     event.preventDefault();
-    if(order.type && order.material && order.firstName && order.lastName && order.email && order.phone && order.street && order.town && order.postCode){
-      order.id = uuidv4();
+      order.orderNumber = uuidv4();
       order.orderDate = new Date().toISOString();
       addOrder(order);
       alert('Your order is added!');
 
-      setOrder({
-        id: '',
-        type: '',
-        material: '',
-        price: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        street: '',
-        town: '',
-        postCode: ''
-      });
-    } else {
-      alert('Please fill required fields');
-    }
+      //setOrder([]
+      //   {
+      //   orderNumber: '',
+      //   type: '',
+      //   material: '',
+      //   price: '',
+      //   firstName: '',
+      //   lastName: '',
+      //   email: '',
+      //   phone: '',
+      //   street: '',
+      //   town: '',
+      //   postCode: ''
+      // });
+
   }
 
   return (
@@ -78,10 +76,10 @@ const Component = ({ className, addOrder, fetchTypes, allTypes, fetchMaterials, 
         <h4>Pillow type</h4>
         <label className={styles.formInputMaterial}>
           <div className={styles.material}>
-            {allTypes.map(item => (
+            {allPaintings.map(item => (
               <div className={styles.inMaterial} key={item.id}>
-                <input className={styles.radio} type="radio" id={item.name} name="type" value={item.name} onChange={handleChange} />
-                <label className={styles.radioLabel} for={item.name}>{item.name} ${item.price}</label>
+                <input className={styles.radio} type="radio" id={item.title} name="type" value={item.title} onChange={handleChange} />
+                <label className={styles.radioLabel} for={item.title}>{item.title} ${item.price}</label>
                 <img src={item.picture} />
               </div>
             ))}
@@ -154,12 +152,12 @@ Component.propTypes = {
 
 const mapStateToProps = state => ({
   allOrders: getAll(state),
-  allTypes: getTypes(state),
+  allPaintings: getPaintings(state),
   allMaterials: getMaterials(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTypes: () => dispatch(fetchAllTypes()),
+  fetchPaintings: () => dispatch(fetchAllPaintings()),
   fetchMaterials: () => dispatch(fetchAllMaterials()),
   addOrder: (order) => dispatch(addOrder(order)),
 });

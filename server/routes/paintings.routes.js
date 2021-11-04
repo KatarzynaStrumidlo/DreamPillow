@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const Type = require('../models/type.model');
+const Painting = require('../models/painting.model');
 
-router.get('/types', async (req, res) => {
+router.get('/paintings', async (req, res) => {
   try {
-    const result = await Type
+    const result = await Painting
       .find()
-      .select('name picture')
+      .select('title picture')
       .sort({created: -1});
     if(!result) res.status(404).json({ type: 'Not found' });
     else res.json(result);
@@ -17,9 +17,9 @@ router.get('/types', async (req, res) => {
   }
 });
 
-router.get('/types/:id', async (req, res) => {
+router.get('/painting/:id', async (req, res) => {
   try {
-    const result = await Type
+    const result = await Painting
       .findById(req.params.id);
     if(!result) res.status(404).json({ type: 'Not found' });
     else res.json(result);

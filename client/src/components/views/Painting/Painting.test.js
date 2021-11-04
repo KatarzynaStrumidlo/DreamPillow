@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AllTypesComponent } from './AllTypes';
+import { PaintingComponent } from './Painting';
 
-describe('Component AllTypes', () => {
+describe('Component Painting', () => {
   it('should render without crashing', () => {
-    const component = shallow(<AllTypesComponent />);
+    const component = shallow(<PaintingComponent />);
     expect(component).toBeTruthy();
   });
 });

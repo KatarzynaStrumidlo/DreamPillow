@@ -1,9 +1,9 @@
 import { initialState } from "./initialState";
 import Axios from 'axios';
+import { API_URL } from '../../src/config.js';
 
 /* selectors */
 export const getAll = ({orders}) => orders.data;
-//export const getOne = ({materials}) => materials.singleMaterial;
 
 /* action name creator */
 const reducerName = 'order';
@@ -29,7 +29,7 @@ export const addOrderRequest = (data) => {
     dispatch(fetchStarted());
 
     Axios
-      .post(`http://localhost:8000/api/order`, data)
+      .post(`${API_URL}api/order`, data)
       .then(res => {
         dispatch(addOrder(res.data));
       })
@@ -73,7 +73,7 @@ export const reducer = (statePart = initialState, action = {}) => {
     case ADD_ORDER: {
       return {
         ...statePart,
-        data: [/*...statePart.data,*/ action.payload],
+        data: action.payload,
       }
     }
     default:

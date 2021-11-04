@@ -4,7 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const materialsRoutes = require('./routes/materials.routes');
-const typesRoutes = require('./routes/types.routes');
+const paintingsRoutes = require('./routes/paintings.routes');
 const examplesRoutes = require('./routes/examples.routes');
 
 const app = express();
@@ -16,13 +16,15 @@ app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
 app.use('/api', materialsRoutes);
-app.use('/api', typesRoutes);
+app.use('/api', paintingsRoutes);
 app.use('/api', examplesRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
   res.status(404).send('404 not found...');
 });
+
+app.use(express.static(path.join(__dirname, '/uploads')));
 
 /* REACT WEBSITE */
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -31,7 +33,7 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/HalterShop', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/Paint', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');

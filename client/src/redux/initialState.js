@@ -15,9 +15,9 @@ export const initialState = {
       error: false,
     },
   },
-  types: {
+  paintings: {
     data: [],
-    singleType: {},
+    singlePainting: {},
     loading: {
       active: false,
       error: false,
