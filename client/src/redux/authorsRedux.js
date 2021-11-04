@@ -1,13 +1,13 @@
 import { initialState } from "./initialState";
 import Axios from 'axios';
-import { API_URL } from '../../src/config.js';
+import { API_URL } from '../config.js';
 
 /* selectors */
-export const getAll = ({materials}) => materials.data;
-export const getOne = ({materials}) => materials.singleMaterial;
+export const getAll = ({authors}) => authors.data;
+export const getOne = ({authors}) => authors.singleAuthor;
 
 /* action name creator */
-const reducerName = 'materials';
+const reducerName = 'authors';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
@@ -23,16 +23,16 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const fetchSuccessSingle = payload => ({ payload, type: FETCH_SUCCESS_SINGLE });
 
 /* thunk creators */
-export const fetchAllMaterials = () => {
+export const fetchAllAuthors = () => {
   return (dispatch, getState) => {
 
     const state = getState();
 
-    if(!state.materials.data.length && state.materials.loading.active === false){
+    if(!state.authors.data.length && state.authors.loading.active === false){
       dispatch(fetchStarted());
 
       Axios
-        .get(`${API_URL}api/materials`)
+        .get(`${API_URL}api/authors`)
         .then(res => {
           dispatch(fetchSuccess(res.data));
         })
@@ -44,12 +44,12 @@ export const fetchAllMaterials = () => {
   };
 };
 
-export const fetchOneMaterial = (id) => {
+export const fetchOneAuthor = (id) => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
 
     Axios
-      .get(`${API_URL}api/materials/${id}`)
+      .get(`${API_URL}api/author/${id}`)
       .then(res => {
         dispatch(fetchSuccessSingle(res.data));
       })
@@ -58,22 +58,6 @@ export const fetchOneMaterial = (id) => {
       });
   };
 };
-
-
-// export const addPostRequest = (data) => {
-//   return (dispatch, getState) => {
-//     dispatch(fetchStarted());
-
-//     Axios
-//       .post(`http://localhost:8000/api/materials`, data)
-//       .then(res => {
-//         dispatch(addPost(res.data));
-//       })
-//       .catch(err => {
-//         dispatch(fetchError(err.message || true));
-//       });
-//   };
-// };
 
 /* reducer */
 export const reducer = (statePart = initialState, action = {}) => {
@@ -104,7 +88,7 @@ export const reducer = (statePart = initialState, action = {}) => {
           active: false,
           error: false,
         },
-        singleMaterial: action.payload,
+        singleAuthor: action.payload,
       };
     }
     case FETCH_ERROR: {
@@ -116,18 +100,6 @@ export const reducer = (statePart = initialState, action = {}) => {
         },
       };
     }
-    // case ADD_POST: {
-    //   return {
-    //     ...statePart,
-    //     data: [...statePart.data, action.payload],
-    //   }
-    // }
-    // case EDIT_POST: {
-    //   return {
-    //     ...statePart,
-    //     data: statePart.data.map(post => post.id === action.payload.id ? action.payload : post),
-    //   }
-    // }
     default:
       return statePart;
   }

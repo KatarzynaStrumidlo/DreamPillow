@@ -3,14 +3,14 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
-import { reducer as materialsReducer } from './materialsRedux';
+import { reducer as authorsReducer } from './authorsRedux';
 import { reducer as examplesReducer } from './examplesRedux';
 import { reducer as paintingsReducer } from './paintingsRedux';
 import { reducer as addOrderReducer } from './addOrderRedux';
 
 // define reducers
 const reducers = {
-  materials: materialsReducer,
+  authors: authorsReducer,
   examples: examplesReducer,
   paintings: paintingsReducer,
   order: addOrderReducer,

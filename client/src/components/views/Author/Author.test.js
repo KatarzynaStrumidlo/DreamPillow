@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MaterialComponent } from './Material';
+import { AuthorComponent } from './Author';
 
-describe('Component Material', () => {
+describe('Component Author', () => {
   it('should render without crashing', () => {
-    const component = shallow(<MaterialComponent />);
+    const component = shallow(<AuthorComponent />);
     expect(component).toBeTruthy();
   });
 });

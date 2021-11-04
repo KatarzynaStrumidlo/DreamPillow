@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AllMaterialsComponent } from './AllTypes';
+import { AllAuthorsComponent } from './AllAuthors';
 
-describe('Component AllMaterials', () => {
+describe('Component AllAuthors', () => {
   it('should render without crashing', () => {
-    const component = shallow(<AllMaterialsComponent />);
+    const component = shallow(<AllAuthorsComponent />);
     expect(component).toBeTruthy();
   });
 });

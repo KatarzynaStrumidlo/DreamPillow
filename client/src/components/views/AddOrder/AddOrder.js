@@ -11,15 +11,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
 import { getAll, addOrder } from '../../../redux/addOrderRedux';
 import { getAll as getPaintings, fetchAllPaintings } from '../../../redux/paintingsRedux';
-import { getAll as getMaterials, fetchAllMaterials } from '../../../redux/materialsRedux';
 
 import styles from './AddOrder.module.scss';
 
-const Component = ({ className, addOrder, fetchPaintings, allPaintings, fetchMaterials, allMaterials, allOrders }) => {
+const Component = ({ className, addOrder, fetchPaintings, allPaintings, allOrders }) => {
 
   useEffect(() => {
     fetchPaintings();
-    fetchMaterials();
   }, []);
 
   //const [order, setOrder] = useState(allOrders
@@ -85,18 +83,6 @@ const Component = ({ className, addOrder, fetchPaintings, allPaintings, fetchMat
             ))}
           </div>
         </label>
-        <h4>Material</h4>
-        <label className={styles.formInputMaterial}>
-          <div className={styles.material}>
-            {allMaterials.map(item => (
-              <div className={styles.inMaterial} key={item.id}>
-                <input className={styles.radio} type="radio" id={item.name} name="material" value={item.name} onChange={handleChange} />
-                <label className={styles.radioLabel} for={item.name}>{item.name} ${item.price}</label>
-                <img src={item.picture} />
-              </div>
-            ))}
-          </div>
-        </label>
         <div className={styles.person}>
           <div className={styles.personName}>
             <label className={styles.formInput}>
@@ -153,12 +139,10 @@ Component.propTypes = {
 const mapStateToProps = state => ({
   allOrders: getAll(state),
   allPaintings: getPaintings(state),
-  allMaterials: getMaterials(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchPaintings: () => dispatch(fetchAllPaintings()),
-  fetchMaterials: () => dispatch(fetchAllMaterials()),
   addOrder: (order) => dispatch(addOrder(order)),
 });
 

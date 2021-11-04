@@ -9,9 +9,9 @@ import { store } from './redux/store';
 
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
 import { Homepage } from './components/views/Homepage/Homepage';
-import { AllMaterials } from './components/views/AllMaterials/AllMaterials';
+import { AllAuthors } from './components/views/AllAuthors/AllAuthors';
 import { AllPaintings } from './components/views/AllPaintings/AllPaintings';
-import { Material } from './components/views/Material/Material';
+import { Author } from './components/views/Author/Author';
 import { Painting } from './components/views/Painting/Painting';
 import { Cart } from './components/views/Cart/Cart';
 import { AddOrder } from './components/views/AddOrder/AddOrder';
@@ -26,9 +26,9 @@ const App = () => (
           <MainLayout>
             <Switch>
               <Route exact path='/' component={Homepage} />
-              <Route exact path='/materials' component={AllMaterials} />
+              <Route exact path='/authors' component={AllAuthors} />
               <Route exact path='/paintings' component={AllPaintings} />
-              <Route exact path='/material/:id' component={Material} />
+              <Route exact path='/author/:id' component={Author} />
               <Route exact path='/painting/:id' component={Painting} />
               <Route exact path='/order' component={AddOrder} />
               <Route exact path='/cart' component={Cart} />

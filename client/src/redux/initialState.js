@@ -7,9 +7,9 @@ export const initialState = {
       error: false,
     },
   },
-  materials: {
+  authors: {
     data: [],
-    singleMaterial: {},
+    singleAuthor: {},
     loading: {
       active: false,
       error: false,

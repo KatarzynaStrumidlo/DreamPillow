@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const Material = require('../models/material.model');
+const Author = require('../models/author.model');
 
-router.get('/materials', async (req, res) => {
+router.get('/authors', async (req, res) => {
   try {
-    const result = await Material
+    const result = await Author
       .find()
-      .select('name price picture')
+      .select('name picture description')
       .sort({created: -1});
     if(!result) res.status(404).json({ material: 'Not found' });
     else res.json(result);
@@ -17,11 +17,11 @@ router.get('/materials', async (req, res) => {
   }
 });
 
-router.get('/materials/:id', async (req, res) => {
+router.get('/author/:id', async (req, res) => {
   try {
-    const result = await Material
+    const result = await Author
       .findById(req.params.id);
-    if(!result) res.status(404).json({ material: 'Not found' });
+    if(!result) res.status(404).json({ author: 'Not found' });
     else res.json(result);
   }
   catch(err) {

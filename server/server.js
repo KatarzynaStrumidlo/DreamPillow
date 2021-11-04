@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 
-const materialsRoutes = require('./routes/materials.routes');
+const authorsRoutes = require('./routes/authors.routes');
 const paintingsRoutes = require('./routes/paintings.routes');
 const examplesRoutes = require('./routes/examples.routes');
 
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
-app.use('/api', materialsRoutes);
+app.use('/api', authorsRoutes);
 app.use('/api', paintingsRoutes);
 app.use('/api', examplesRoutes);
 
