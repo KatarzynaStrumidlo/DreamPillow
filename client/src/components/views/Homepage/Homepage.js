@@ -67,7 +67,7 @@ Component.propTypes = {
 
 const mapStateToProps = state => ({
   allPaintings: getAll(state),
-  loading: state.examples.loading
+  loading: state.paintings.loading
 });
 
 const mapDispatchToProps = dispatch => ({

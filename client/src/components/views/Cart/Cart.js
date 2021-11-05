@@ -5,38 +5,33 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import clsx from 'clsx';
 
+import { API_URL } from '../../../config';
+
+import { getCartCost, getAll, removeFromCart } from '../../../redux/cartRedux';
+import { fetchAllPaintings } from '../../../redux/paintingsRedux';
 import { connect } from 'react-redux';
 
 import styles from './Cart.module.scss';
 
-const Component = ({className}) => {
+const Component = ({ className, products, total, fetchAllPaintings, removeFromCart }) => {
 
-  // useEffect(() => {
-  //   fetchOneMaterial();
-  // }, []);
+  useEffect(() => {
+    fetchAllPaintings();
+  }, []);
 
   return (
     <div className={styles.root}>
-      <div className={clsx(className, styles.cartProduct)}>
-        <HighlightOffIcon className={clsx(className, styles.delete)} />
-        <img className={clsx(className, styles.picture)} src='https://cdn.pixabay.com/photo/2017/02/16/10/51/pillow-2071096_960_720.jpg' alt='' />
+      {products.map(item => (<div key={item._id} className={clsx(className, styles.cartProduct)}>
+        <HighlightOffIcon className={clsx(className, styles.delete)} onClick={() => removeFromCart(item)} />
+        <img className={clsx(className, styles.picture)} src={`${API_URL}images/${item.picture}`} alt='' />
         <div className={clsx(className, styles.description)}>
-          <p className={clsx(className, styles.title)}>Some product</p>
-          <p className={clsx(className, styles.number)}>serial number:</p>
-          <p className={clsx(className, styles.price)}>price:</p>
+          <p className={clsx(className, styles.title)}>"{item.title}"</p>
+          <p className={clsx(className, styles.price)}>price: $ {item.price}</p>
+          <p className={clsx(className, styles.price)}>price: $ {item.amountInCart}</p>
         </div>
-      </div>
-      <div className={clsx(className, styles.cartProduct)}>
-        <HighlightOffIcon className={clsx(className, styles.delete)} />
-        <img className={clsx(className, styles.picture)} src='https://cdn.pixabay.com/photo/2017/02/16/10/51/pillow-2071096_960_720.jpg' alt='' />
-        <div className={clsx(className, styles.description)}>
-          <p className={clsx(className, styles.title)}>Some product</p>
-          <p className={clsx(className, styles.number)}>serial number:}</p>
-          <p className={clsx(className, styles.price)}>price:</p>
-        </div>
-      </div>
+      </div>))}
       <div className={clsx(className, styles.total)}>
-        <p>Total price: $</p>
+        <p>Total price: $ {total}</p>
       </div>
     </div>
   )
@@ -46,17 +41,19 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = (state) => ({
-//   material: getOne(state),
-// });
+const mapStateToProps = (state) => ({
+  products: getAll(state),
+  total: getCartCost(state),
+});
 
-// const mapDispatchToProps = (dispatch, props) => ({
-//   fetchOneMaterial: () => dispatch(fetchOneMaterial(props.match.params.id)),
-// });
+const mapDispatchToProps = (dispatch, props) => ({
+  fetchAllPaintings: () => dispatch(fetchAllPaintings()),
+  removeFromCart: (item) => dispatch(removeFromCart(item)),
+});
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  Component as Cart,
+  Container as Cart,
   Component as CartComponent,
 };

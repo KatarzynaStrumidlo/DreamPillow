@@ -21,7 +21,7 @@ const Component = ({className, allPantings, fetchPaintings, loading}) => {
   if(loading.active) return (<div>Loading...</div>)
   else {
   return (<div className={clsx(className, styles.root)}>
-    {allPantings.map(item => (<div className={clsx(className, styles.ad)} key={item.id}>
+    {allPantings.map(item => (<div className={clsx(className, styles.ad)} key={item._id}>
     <Link to={`/painting/${item._id}`}><img className={clsx(className, styles.picture)} src={`${API_URL}images/${item.picture}`} alt=''/></Link>
       <Link className={clsx(className, styles.info)} to={`/painting/${item._id}`}>
         <h6 className={clsx(className, styles.name)}>{item.title}</h6>

@@ -3,11 +3,12 @@ import Axios from 'axios';
 import { API_URL } from '../../src/config.js';
 
 /* selectors */
-export const getAll = ({examples}) => examples.data;
-export const getOne = ({examples}) => examples.singleMaterial;
+export const getAll = ({ cart }) => cart.data;
+export const getOne = ({ cart }) => cart.singleProduct;
+export const getCartCost = ({ cart }) => cart.cartCost;
 
 /* action name creator */
-const reducerName = 'examples';
+const reducerName = 'cart';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
@@ -15,12 +16,16 @@ const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_SUCCESS_SINGLE = createActionName('FETCH_SUCCESS_SINGLE');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
+const ADD_TO_CART = createActionName('ADD_TO_CART');
+const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const fetchSuccessSingle = payload => ({ payload, type: FETCH_SUCCESS_SINGLE });
+export const addToCart = payload => ({ payload, type: ADD_TO_CART });
+export const removeFromCart = payload => ({ payload, type: REMOVE_FROM_CART });
 
 /* thunk creators */
 export const fetchPublished = () => {
@@ -98,6 +103,36 @@ export const reducer = (statePart = initialState, action = {}) => {
           active: false,
           error: action.payload,
         },
+      };
+    }
+    case ADD_TO_CART: {
+      let productInCart = action.payload;
+      productInCart.inCart = true;
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: false,
+        },
+        cartCost: statePart.cartCost +  parseInt(productInCart.price),
+        data: [...statePart.data, action.payload],
+      };
+    }
+    case REMOVE_FROM_CART: {
+        let productToRemove = action.payload;
+        let price = parseInt(productToRemove.price);
+        let products = statePart.data;
+        let index = products.indexOf(productToRemove);
+        products.length == 1 ? products = [] : products = products.splice(index, 1);
+        console.log(productToRemove);
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: action.payload,
+        },
+        cartCost: statePart.cartCost - price,
+        data: products,
       };
     }
     default:

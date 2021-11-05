@@ -73,7 +73,7 @@ export const reducer = (statePart = initialState, action = {}) => {
     case ADD_ORDER: {
       return {
         ...statePart,
-        data: action.payload,
+        data: [...statePart.data, action.payload],
       }
     }
     default:

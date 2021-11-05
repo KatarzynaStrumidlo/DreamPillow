@@ -10,14 +10,19 @@ import clsx from 'clsx';
 
 import { connect } from 'react-redux';
 import { getOne, fetchOnePainting } from '../../../redux/paintingsRedux';
+import { addToCart } from '../../../redux/cartRedux';
 
 import styles from './Painting.module.scss';
 
-const Component = ({className, painting, fetchOnePainting}) => {
+const Component = ({ className, painting, fetchOnePainting, addToCart }) => {
 
   useEffect(() => {
     fetchOnePainting();
   }, []);
+
+  const isInCart = () => {
+    painting.inCart === true ? alert('This painting already is in cart') : addToCart(painting);
+  };
 
   return (
     <div className={clsx(className, styles.root)} key={painting.id}>
@@ -27,7 +32,7 @@ const Component = ({className, painting, fetchOnePainting}) => {
         <h3 className={clsx(className, styles.title)}>{painting.title}</h3>
         <p className={clsx(className, styles.description)}>{painting.description}</p>
         <p className={clsx(className, styles.price)}>$ {painting.price}</p>
-        <Link className={clsx(className, styles.order)} to={'/order'}>Add to cart</Link>
+        <Link className={clsx(className, styles.order)} to={'/cart'} onClick={isInCart}>Add to cart</Link>
       </div>
     </div>
   )
@@ -43,6 +48,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   fetchOnePainting: () => dispatch(fetchOnePainting(props.match.params.id)),
+  addToCart: (painting) => dispatch(addToCart(painting)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

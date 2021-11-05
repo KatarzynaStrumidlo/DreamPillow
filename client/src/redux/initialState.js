@@ -1,12 +1,4 @@
 export const initialState = {
-  examples: {
-    data: [],
-    singleExample: {},
-    loading: {
-      active: false,
-      error: false,
-    },
-  },
   authors: {
     data: [],
     singleAuthor: {},
@@ -22,6 +14,15 @@ export const initialState = {
       active: false,
       error: false,
     },
+  },
+  cart: {
+    cartCost: 0,
+    data: [],
+    singleProduct: {},
+    loading: {
+      active: false,
+      error: false,
+    }
   },
   orders: {
     data: [],
