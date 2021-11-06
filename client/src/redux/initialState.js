@@ -17,6 +17,7 @@ export const initialState = {
   },
   cart: {
     cartCost: 0,
+    numberOfProducts: 0,
     data: [],
     singleProduct: {},
     loading: {

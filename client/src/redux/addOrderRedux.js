@@ -29,7 +29,7 @@ export const addOrderRequest = (data) => {
     dispatch(fetchStarted());
 
     Axios
-      .post(`${API_URL}api/order`, data)
+      .post(`http://localhost:8000/api/orders/add`)
       .then(res => {
         dispatch(addOrder(res.data));
       })

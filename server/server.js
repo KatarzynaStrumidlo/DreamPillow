@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const authorsRoutes = require('./routes/authors.routes');
 const paintingsRoutes = require('./routes/paintings.routes');
-const examplesRoutes = require('./routes/examples.routes');
+const addOrderRoutes = require('./routes/addOrder.routes');
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 /* API ENDPOINTS */
 app.use('/api', authorsRoutes);
 app.use('/api', paintingsRoutes);
-app.use('/api', examplesRoutes);
+app.use('/api', addOrderRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {

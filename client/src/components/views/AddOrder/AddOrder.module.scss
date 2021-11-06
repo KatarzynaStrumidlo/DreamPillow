@@ -5,23 +5,65 @@
   width: 70%;
   text-align: center;
 
-  .title {
-    font-family: $logo-font;
+  .header {
+    font-family: $title-font;
     font-weight: 600;
-    font-size: 40px;
-    text-align: center;
+    font-size: 30px;
+    text-align: start;
     margin: 40px 0 0 0;
     padding: 40px;
     color: $logo-color;
-    background-color: $background-color;
-    //border-bottom: $tab-color solid 1px;
+    border-bottom: $tab-color solid 1px;
+  }
+
+  .cartProduct {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+    padding: 20px 0 10px 0;
+    margin: auto;
+    border-bottom:  $tab-color solid 1px;
+    }
+
+    .picture {
+      width: 10%;
+      height: 10%;
+      margin-left: 5%;
+    }
+
+    .description {
+      padding: 5px 10px;
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .title, .price, .number {
+        font-size: 15px;
+        font-family: $text-font;
+        color: $text-color;
+        margin-left: 70px;
+        padding-left: 5px;
+      }
+
+      .price {
+        margin-right: 15%;
+      }
+    }
+  }
+  .total {
+    text-align: end;
+    width: 100%;
+    padding-right: 15%;
   }
 
   .addForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $background-color;
     padding: 10px 0 0 0;
     margin-bottom: 40px;
 
@@ -38,52 +80,7 @@
       border-bottom: $tab-color solid 1px;
     }
 
-    .formInputMaterial {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 20px;
-      font-family: $title-font;
-      color: $text-color;
-      font-weight: 300;
-      margin: 20px auto;
-      width: 90%;
-      align-items: flex-start;
-
-      .material {
-        margin: auto;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        width: 85%;
-
-        .inMaterial {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-between;
-          margin: 0 8px;
-          width: 18%;
-
-          .radio {
-            height: 18px;
-          }
-          .radioLabel {
-            font-family: $title-font;
-            font-size: 14px;
-          }
-
-          img {
-            width: 15vh;
-            height: 15vh;
-          }
-        }
-      }
-    }
-
     input {
-      background-color: $background-color;
       border: none;
       height: 30px;
       outline: none;
@@ -148,16 +145,14 @@
     }
 
     .button {
-      font-family: $title-font;
-      font-weight: 400;
-      font-size: 15px;
-      text-align: center;
       background-color: $tab-color;
-      border: none;
-      color: $background-color;
+      border-radius: 5%;
+      padding: 10px 30px;
+      color: $main-color;
       text-decoration: none;
-      padding: 10px 20px;
-      margin: 50px;
+      border: none;
+      font-size: 15px;
+      margin: 20px 0;
 
       &:hover {
         cursor: pointer;
@@ -165,4 +160,4 @@
       }
     }
   }
-}
+

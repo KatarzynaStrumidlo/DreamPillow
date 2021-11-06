@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faRoad, faMapPin, faMailBulk, faCity } from '@fortawesome/free-solid-svg-icons';
@@ -7,125 +7,91 @@ import { faUser as user, faEnvelope } from '@fortawesome/free-regular-svg-icons'
 
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
+import { API_URL } from '../../../config';
 
 import { connect } from 'react-redux';
-import { getAll, addOrder } from '../../../redux/addOrderRedux';
-import { getAll as getPaintings, fetchAllPaintings } from '../../../redux/paintingsRedux';
+import { getAll, addOrderRequest } from '../../../redux/addOrderRedux';
+import { getAll as getAllProducts, getCartCost } from '../../../redux/cartRedux';
 
 import styles from './AddOrder.module.scss';
 
-const Component = ({ className, addOrder, fetchPaintings, allPaintings, allOrders }) => {
+const Component = ({ className, addOrderRequest, allOrders, products, total }) => {
 
-  useEffect(() => {
-    fetchPaintings();
-  }, []);
-
-  //const [order, setOrder] = useState(allOrders
-    // {
-    //   orderNumber: '',
-    //   type: '',
-    //   material: '',
-    //   price: '',
-    //   firstName: '',
-    //   lastName: '',
-    //   email: '',
-    //   phone: '',
-    //   street: '',
-    //   city: '',
-    //   postCode: '',
-    //   orderDate: ''
-    // }
-  //);
   const [order, setOrder] = useState(allOrders);
 
   const handleChange = (event) => {
-    setOrder({...order, [event.target.name]: event.target.value})
-    console.log(order);
+    setOrder({...order, [event.target.name]: event.target.value});
   }
 
   const submitForm = (event) => {
     event.preventDefault();
-      order.orderNumber = uuidv4();
-      order.orderDate = new Date().toISOString();
-      addOrder(order);
+    if(order.firstName.length > 1 && order.lastName.length > 1 && order.email){
+      addOrderRequest({ ...order, orderDate: new Date().toISOString() });
+      console.log(order);
       alert('Your order is added!');
-
-      //setOrder([]
-      //   {
-      //   orderNumber: '',
-      //   type: '',
-      //   material: '',
-      //   price: '',
-      //   firstName: '',
-      //   lastName: '',
-      //   email: '',
-      //   phone: '',
-      //   street: '',
-      //   town: '',
-      //   postCode: ''
-      // });
-
+    } else {
+      alert('Please fill required fields');
+    }
   }
 
   return (
     <div className={clsx(className, styles.root)}>
-      <h2 className={styles.title}>Order Your Dream Pillow</h2>
-      <form className={styles.addForm} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
-        <h4>Pillow type</h4>
-        <label className={styles.formInputMaterial}>
-          <div className={styles.material}>
-            {allPaintings.map(item => (
-              <div className={styles.inMaterial} key={item.id}>
-                <input className={styles.radio} type="radio" id={item.title} name="type" value={item.title} onChange={handleChange} />
-                <label className={styles.radioLabel} for={item.title}>{item.title} ${item.price}</label>
-                <img src={item.picture} />
-              </div>
-            ))}
-          </div>
-        </label>
-        <div className={styles.person}>
-          <div className={styles.personName}>
-            <label className={styles.formInput}>
-              <FontAwesomeIcon icon={faUser} className={styles.icon}/>
+      <h2 className={clsx(className,styles.header)}>Your order details</h2>
+      <div className={clsx(className, styles.products)}>
+        {products.map(item => (
+          <div key={item._id} className={clsx(className, styles.cartProduct)}>
+            <img className={clsx(className, styles.picture)} src={`${API_URL}images/${item.picture}`} alt='' />
+            <div className={clsx(className, styles.description)}>
+              <p className={clsx(className, styles.title)}>"{item.title}"</p>
+              <p className={clsx(className, styles.price)}>price: $ {item.price}</p>
+            </div>
+        </div>))}
+        <p className={clsx(className, styles.total)}>Total price: $ {total}</p>
+      </div>
+      <form className={clsx(className,styles.addForm)} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
+        <div className={clsx(className,styles.person)}>
+          <div className={clsx(className,styles.personName)}>
+            <label className={clsx(className,styles.formInput)}>
+              <FontAwesomeIcon icon={faUser} className={clsx(className,styles.icon)}/>
               <input type="text" name="firstName" placeholder="Name" onChange={handleChange}></input>
             </label>
-            <label className={styles.formInput}>
-            <FontAwesomeIcon icon={user} className={styles.icon}/>
+            <label className={clsx(className,styles.formInput)}>
+            <FontAwesomeIcon icon={user} className={clsx(className,styles.icon)}/>
               <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange}></input>
             </label>
           </div>
-          <label className={styles.formInput}>
-            <FontAwesomeIcon icon={faEnvelope} className={styles.icon}/>
+          <label className={clsx(className,styles.formInput)}>
+            <FontAwesomeIcon icon={faEnvelope} className={clsx(className,styles.icon)}/>
             <input type="email" name="email" placeholder="E-mail" onChange={handleChange}></input>
           </label>
-          <label className={styles.formInput}>
-            <FontAwesomeIcon icon={faPhone} className={styles.icon}/>
+          <label className={clsx(className,styles.formInput)}>
+            <FontAwesomeIcon icon={faPhone} className={clsx(className,styles.icon)}/>
             <input type="text" name="phone" placeholder="Phone number" onChange={handleChange}></input>
           </label>
         </div>
-        <div className={styles.addres}>
-          <div className={styles.street}>
-            <label className={styles.formInput}>
+        <div className={clsx(className,styles.addres)}>
+          <div className={clsx(className,styles.street)}>
+            <label className={clsx(className,styles.formInput)}>
             <FontAwesomeIcon icon={faRoad} className={styles.icon}/>
               <input type="text" name="street" placeholder="Street" onChange={handleChange}></input>
             </label>
-            <label className={styles.formInput}>
-              <FontAwesomeIcon icon={faMapPin} className={styles.icon}/>
+            <label className={clsx(className,styles.formInput)}>
+              <FontAwesomeIcon icon={faMapPin} className={clsx(className,styles.icon)}/>
               <input type="text" name="houseNumber" placeholder="House number" onChange={handleChange}></input>
             </label>
           </div>
-          <div className={styles.city}>
-            <label className={styles.formInput}>
-              <FontAwesomeIcon icon={faCity} className={styles.icon}/>
+          <div className={clsx(className,styles.city)}>
+            <label className={clsx(className,styles.formInput)}>
+              <FontAwesomeIcon icon={faCity} className={clsx(className,styles.icon)}/>
               <input type="text" name="city" placeholder="City" onChange={handleChange}></input>
             </label>
-            <label className={styles.formInput}>
-              <FontAwesomeIcon icon={faMailBulk} className={styles.icon}/>
+            <label className={clsx(className,styles.formInput)}>
+              <FontAwesomeIcon icon={faMailBulk} className={clsx(className,styles.icon)}/>
               <input type="text" name="postCode" placeholder="Post code" onChange={handleChange}></input>
             </label>
           </div>
         </div>
-        <button className={styles.button} type="submit">Order</button>
+        <button className={clsx(className,styles.button)} type="submit">Order</button>
       </form>
     </div>
   );
@@ -138,12 +104,12 @@ Component.propTypes = {
 
 const mapStateToProps = state => ({
   allOrders: getAll(state),
-  allPaintings: getPaintings(state),
+  products: getAllProducts(state),
+  total: getCartCost(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPaintings: () => dispatch(fetchAllPaintings()),
-  addOrder: (order) => dispatch(addOrder(order)),
+  addOrderRequest: (order) => dispatch(addOrderRequest(order)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

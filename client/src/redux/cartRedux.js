@@ -6,6 +6,7 @@ import { API_URL } from '../../src/config.js';
 export const getAll = ({ cart }) => cart.data;
 export const getOne = ({ cart }) => cart.singleProduct;
 export const getCartCost = ({ cart }) => cart.cartCost;
+export const getNumberOfProducts = ({ cart }) => cart.numberOfProducts;
 
 /* action name creator */
 const reducerName = 'cart';
@@ -115,6 +116,7 @@ export const reducer = (statePart = initialState, action = {}) => {
           error: false,
         },
         cartCost: statePart.cartCost +  parseInt(productInCart.price),
+        numberOfProducts: statePart.numberOfProducts += 1,
         data: [...statePart.data, action.payload],
       };
     }
@@ -132,6 +134,7 @@ export const reducer = (statePart = initialState, action = {}) => {
           error: action.payload,
         },
         cartCost: statePart.cartCost - price,
+        numberOfProducts: statePart.numberOfProducts -= 1,
         data: products,
       };
     }
