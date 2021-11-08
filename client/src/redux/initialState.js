@@ -10,6 +10,7 @@ export const initialState = {
   paintings: {
     data: [],
     singlePainting: {},
+    paintingsInCart: [],
     loading: {
       active: false,
       error: false,

@@ -107,6 +107,7 @@ export const reducer = (statePart = initialState, action = {}) => {
       };
     }
     case ADD_TO_CART: {
+      console.log(statePart)
       let productInCart = action.payload;
       productInCart.inCart = true;
       return {
@@ -125,8 +126,7 @@ export const reducer = (statePart = initialState, action = {}) => {
         let price = parseInt(productToRemove.price);
         let products = statePart.data;
         let index = products.indexOf(productToRemove);
-        products.length == 1 ? products = [] : products = products.splice(index, 1);
-        console.log(productToRemove);
+        products.length == 1 ? products = [] : products.splice(index, 1);
       return {
         ...statePart,
         loading: {

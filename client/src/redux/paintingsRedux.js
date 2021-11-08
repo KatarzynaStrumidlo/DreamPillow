@@ -5,6 +5,7 @@ import { API_URL } from '../../src/config.js';
 /* selectors */
 export const getAll = ({ paintings }) => paintings.data;
 export const getOne = ({ paintings }) => paintings.singlePainting;
+export const getPaintingsInCart = ({ paintings }) => paintings.paintingsInCart;
 
 /* action name creator */
 const reducerName = 'paintings';
@@ -15,12 +16,14 @@ const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_SUCCESS_SINGLE = createActionName('FETCH_SUCCESS_SINGLE');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
+const SET_IN_CART = createActionName('SET_IN_CART');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const fetchSuccessSingle = payload => ({ payload, type: FETCH_SUCCESS_SINGLE });
+export const setInCart = payload => ({ payload, type: SET_IN_CART });
 
 /* thunk creators */
 export const fetchAllPaintings = () => {
@@ -99,6 +102,15 @@ export const reducer = (statePart = initialState, action = {}) => {
           error: action.payload,
         },
       };
+    }
+    case SET_IN_CART: {
+      if(!statePart.paintingsInCart.includes(statePart.singlePainting._id)){
+        statePart.paintingsInCart.push(statePart.singlePainting._id)
+      }
+      return {
+        ...statePart,
+        paintingsInCart: [...statePart.paintingsInCart],
+      }
     }
     default:
       return statePart;

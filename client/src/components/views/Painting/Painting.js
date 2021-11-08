@@ -9,20 +9,25 @@ import { API_URL } from '../../../config';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getOne, fetchOnePainting } from '../../../redux/paintingsRedux';
+import { getOne, fetchOnePainting, setInCart, getPaintingsInCart } from '../../../redux/paintingsRedux';
 import { addToCart } from '../../../redux/cartRedux';
 
 import styles from './Painting.module.scss';
 
-const Component = ({ className, painting, fetchOnePainting, addToCart }) => {
+const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart, paintingsInCart }) => {
 
   useEffect(() => {
     fetchOnePainting();
   }, []);
 
   const isInCart = () => {
-    painting.inCart === true ? alert('This painting already is in cart') : addToCart(painting);
-  };
+    if(paintingsInCart.includes(painting._id)){
+      alert('This painting is already in cart')
+    } else {
+        addToCart(painting)
+        setInCart()
+      }
+    };
 
   return (
     <div className={clsx(className, styles.root)} key={painting.id}>
@@ -44,11 +49,13 @@ Component.propTypes = {
 
 const mapStateToProps = (state) => ({
   painting: getOne(state),
+  paintingsInCart: getPaintingsInCart(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
   fetchOnePainting: () => dispatch(fetchOnePainting(props.match.params.id)),
   addToCart: (painting) => dispatch(addToCart(painting)),
+  setInCart: () => dispatch(setInCart()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

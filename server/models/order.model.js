@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const authorSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
   // products: {type: Object, required: true},
   // totalPrice: {type: String, required: true},
   firstName: { type: String, required: true },
@@ -13,4 +13,4 @@ const authorSchema = new mongoose.Schema({
   postCode: { type: String, required: true },
 });
 
-module.exports = mongoose.model('Author', authorSchema);
+module.exports = mongoose.model('Order', orderSchema);
