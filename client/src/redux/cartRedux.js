@@ -126,7 +126,7 @@ export const reducer = (statePart = initialState, action = {}) => {
         let price = parseInt(productToRemove.price);
         let products = statePart.data;
         let index = products.indexOf(productToRemove);
-        products.length == 1 ? products = [] : products.splice(index, 1);
+        products.length === 1 ? products = [] : products.splice(index, 1);
       return {
         ...statePart,
         loading: {

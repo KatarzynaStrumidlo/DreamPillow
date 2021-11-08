@@ -21,8 +21,8 @@ const Component = ({className, allAuthors, fetchAllAuthors, loading}) => {
   if(loading.active) return (<div>Loading...</div>)
   else {
   return (<div className={clsx(className, styles.root)}>
-    {allAuthors.map(item => (<div className={clsx(className, styles.ad)} key={item.id}>
-      <Link to={`/author/${item._id}`}><img className={clsx(className, styles.picture)} src={`${API_URL}images/${item.picture}`} alt=''/></Link>
+    {allAuthors.map(item => (<div className={clsx(className, styles.ad)} key={item._id}>
+      <Link to={`/author/${item._id}`} key={item.name}><img className={clsx(className, styles.picture)} src={`${API_URL}images/${item.picture}`} alt=''/></Link>
       <Link className={styles.info} to= {`/author/${item._id}`}>
         <h6 className={clsx(className, styles.name)}>{item.name}</h6>
       </Link>
