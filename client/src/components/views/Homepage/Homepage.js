@@ -19,15 +19,7 @@ const Component = ({className, allPaintings, fetchAllPaintings, loading}) => {
 
   useEffect(() => {
     fetchAllPaintings();
-  }, []);
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+  }, [fetchAllPaintings]);
 
   if(loading.active) return (<div>Loading...</div>)
   else {

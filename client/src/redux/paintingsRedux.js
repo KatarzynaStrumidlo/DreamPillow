@@ -29,8 +29,6 @@ export const setInCart = payload => ({ payload, type: SET_IN_CART });
 export const fetchAllPaintings = () => {
   return (dispatch, getState) => {
 
-    const state = getState();
-
     //if(!state.paintings.data.length && state.paintings.loading.active === false){
       dispatch(fetchStarted());
 

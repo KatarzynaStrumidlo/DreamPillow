@@ -18,9 +18,9 @@ const Component = ({ className, products, total, fetchAllPaintings, removeFromCa
 
   useEffect(() => {
     fetchAllPaintings();
-  }, []);
+  }, [fetchAllPaintings]);
 
-  if (numberOfProducts == 0){
+  if (numberOfProducts === 0){
     return (
       <div className={clsx(className, styles.root)}>
         <p className={clsx(className, styles.empty)}>Cart is empty</p>

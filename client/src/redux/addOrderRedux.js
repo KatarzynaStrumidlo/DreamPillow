@@ -1,6 +1,5 @@
 import { initialState } from "./initialState";
 import Axios from 'axios';
-import { API_URL } from '../../src/config.js';
 
 /* selectors */
 export const getAll = ({orders}) => orders.data;
@@ -32,6 +31,15 @@ export const addOrderRequest = (data) => {
       .post(`http://localhost:8000/api/orders/add`, {
         data: {
           firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          street: data.street,
+          houseNumber: data.houseNumber,
+          city: data.city,
+          postCode: data.postCode,
+          products: data.products,
+          totalPrice: data.totalPrice
         }
       })
       .then(res => {

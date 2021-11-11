@@ -17,11 +17,11 @@ const Component = ({className, author, fetchOneAuthor}) => {
 
   useEffect(() => {
     fetchOneAuthor();
-  }, []);
+  }, [fetchOneAuthor]);
 
   return (
     <div className={clsx(className, styles.root)}>
-      <img className={clsx(className, styles.picture)} src={`${API_URL}images/${author.picture}`} alt='' />
+      { author.picture && <img className={clsx(className, styles.picture)} src={`${API_URL}images/${author.picture}`} alt='' /> }
       <div className={clsx(className, styles.description)}>
         <Link className={clsx(className, styles.back)} to={'/authors'}><ArrowBackIosIcon /></Link>
         <h3 className={clsx(className, styles.title)}>{author.name}</h3>

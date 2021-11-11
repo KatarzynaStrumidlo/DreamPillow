@@ -16,7 +16,7 @@ const Component = ({className, allPantings, fetchPaintings, loading}) => {
 
   useEffect(() => {
     fetchPaintings();
-  }, []);
+  }, [fetchPaintings]);
 
   if(loading.active) return (<div>Loading...</div>)
   else {

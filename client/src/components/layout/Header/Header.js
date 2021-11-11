@@ -21,7 +21,7 @@ const Component = ({ className, numberOfProducts }) => {
         <Link className ={clsx(className,styles.logo)} to={'/'}><img src={`${API_URL}images/logo.png`} alt='' /></Link>
         <div className={clsx(className,styles.tabs)}>
           <Link className ={clsx(className,styles.button)} to={'/paintings'}>Paintings</Link>
-          <Link className ={clsx(className,styles.button)} to={'/authors'}>Authors</Link>
+          <Link className ={clsx(className,styles.button)} to={'/authors'}>Artists</Link>
           <Link to={'/cart'}><FontAwesomeIcon icon={faShoppingCart} className={clsx(className, styles.cart)}/></Link>
           <p className={clsx(className, styles.numberOfProducts)}>{numberOfProducts}</p>
         </div>

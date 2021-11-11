@@ -1,12 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faRoad, faMapPin, faMailBulk, faCity } from '@fortawesome/free-solid-svg-icons';
 import { faUser as user, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import clsx from 'clsx';
-import { v4 as uuidv4 } from 'uuid';
 import { API_URL } from '../../../config';
 
 import { connect } from 'react-redux';
@@ -17,6 +16,12 @@ import styles from './AddOrder.module.scss';
 
 const Component = ({ className, addOrderRequest, allOrders, products, total }) => {
 
+  useEffect(() => {
+    if(products.length === 0){
+      window.location.href = '/';
+    }
+  }, [products]);
+
   const [order, setOrder] = useState(allOrders);
 
   const handleChange = (event) => {
@@ -25,11 +30,15 @@ const Component = ({ className, addOrderRequest, allOrders, products, total }) =
 
   const submitForm = (event) => {
     event.preventDefault();
-    if(order.firstName.length > 1 && order.lastName.length > 1 && order.email){
-      addOrderRequest({ ...order, orderDate: new Date().toISOString() });
-      console.log(order);
+
+    const formProps = ['firstName', 'lastName', 'email', 'phone', 'street', 'houseNumber', 'city', 'postCode'];
+
+    if(formProps.every(prop => order[prop] && order[prop].length > 0)){
+      addOrderRequest({ ...order, orderDate: new Date().toISOString(), products: products, totalPrice: total });
       alert('Your order is added!');
-    } else {
+      window.location.href = "/";
+    }
+    else{
       alert('Please fill required fields');
     }
   }
@@ -48,7 +57,7 @@ const Component = ({ className, addOrderRequest, allOrders, products, total }) =
         </div>))}
         <p className={clsx(className, styles.total)}>Total price: $ {total}</p>
       </div>
-      <form className={clsx(className,styles.addForm)} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
+      <form className={clsx(className,styles.addForm)} action="/contact/send-message" method="POST" encType="multipart/form-data" onSubmit={submitForm}>
         <div className={clsx(className,styles.person)}>
           <div className={clsx(className,styles.personName)}>
             <label className={clsx(className,styles.formInput)}>

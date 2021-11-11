@@ -48,7 +48,7 @@ const Component = ({ className }) => (
     </div>
     <div className={clsx(className, styles.bottomBar)}>
       <div className={clsx(className, styles.copyright)}>
-        <p>©Copyright 2021 Dream Pillow | All Rights Reserved</p>
+        <p>©Copyright 2021 Paint | All Rights Reserved</p>
       </div>
       <div className={clsx(className, styles.socialMedia)}>
         <Link to='/#'>

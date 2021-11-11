@@ -16,7 +16,7 @@ const Component = ({className, allAuthors, fetchAllAuthors, loading}) => {
 
   useEffect(() => {
     fetchAllAuthors();
-  }, []);
+  }, [fetchAllAuthors]);
 
   if(loading.active) return (<div>Loading...</div>)
   else {

@@ -107,9 +107,7 @@ export const reducer = (statePart = initialState, action = {}) => {
       };
     }
     case ADD_TO_CART: {
-      console.log(statePart)
       let productInCart = action.payload;
-      productInCart.inCart = true;
       return {
         ...statePart,
         loading: {

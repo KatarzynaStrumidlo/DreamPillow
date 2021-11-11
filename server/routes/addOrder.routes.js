@@ -14,7 +14,12 @@ router.post('/orders/add', async (req, res) => {
       houseNumber,
       city,
       postCode,
-    } = req.body;
+      totalPrice,
+      products
+    } = req.body.data;
+
+    console.log(req.body.data);
+    console.log(firstName)
 
     const newOrder = new Order({
       firstName: firstName,
@@ -25,6 +30,8 @@ router.post('/orders/add', async (req, res) => {
       houseNumber: houseNumber,
       city: city,
       postCode: postCode,
+      totalPrice: totalPrice,
+      products: products
     });
 
     console.log('POST')

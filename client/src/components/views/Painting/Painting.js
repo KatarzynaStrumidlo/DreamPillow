@@ -18,7 +18,7 @@ const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart
 
   useEffect(() => {
     fetchOnePainting();
-  }, []);
+  }, [fetchOnePainting]);
 
   const isInCart = () => {
     if(paintingsInCart.includes(painting._id)){
@@ -31,7 +31,7 @@ const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart
 
   return (
     <div className={clsx(className, styles.root)} key={painting.id}>
-      <img className={clsx(className, styles.picture)} src={`${API_URL}images/${painting.picture}`} alt='' />
+      {painting.picture && <img className={clsx(className, styles.picture)} src={`${API_URL}images/${painting.picture}`} alt='' /> }
       <div className={clsx(className, styles.description)}>
         <Link className={clsx(className, styles.back)} to={'/paintings'}><ArrowBackIosIcon /></Link>
         <h3 className={clsx(className, styles.title)}>{painting.title}</h3>
