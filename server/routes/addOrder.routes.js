@@ -18,9 +18,6 @@ router.post('/orders/add', async (req, res) => {
       products
     } = req.body.data;
 
-    console.log(req.body.data);
-    console.log(firstName)
-
     const newOrder = new Order({
       firstName: firstName,
       lastName: lastName,
@@ -33,9 +30,6 @@ router.post('/orders/add', async (req, res) => {
       totalPrice: totalPrice,
       products: products
     });
-
-    console.log('POST')
-
     await newOrder.save();
     res.json({ message: 'OK' });
   } catch(err) {

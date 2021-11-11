@@ -7,7 +7,7 @@ router.get('/paintings', async (req, res) => {
   try {
     const result = await Painting
       .find()
-      .select('title picture price inCart')
+      .select('title picture price author')
       .sort({created: -1});
     if(!result) res.status(404).json({ type: 'Not found' });
     else res.json(result);

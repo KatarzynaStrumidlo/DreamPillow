@@ -32,10 +32,12 @@ const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart
   return (
     <div className={clsx(className, styles.root)} key={painting.id}>
       {painting.picture && <img className={clsx(className, styles.picture)} src={`${API_URL}images/${painting.picture}`} alt='' /> }
-      <div className={clsx(className, styles.description)}>
+      <div className={clsx(className, styles.about)}>
         <Link className={clsx(className, styles.back)} to={'/paintings'}><ArrowBackIosIcon /></Link>
+
         <h3 className={clsx(className, styles.title)}>{painting.title}</h3>
         <p className={clsx(className, styles.description)}>{painting.description}</p>
+        <p className={clsx(className, styles.author)}>{painting.author}</p>
         <p className={clsx(className, styles.price)}>$ {painting.price}</p>
         <Link className={clsx(className, styles.order)} to={'/cart'} onClick={isInCart}>Add to cart</Link>
       </div>

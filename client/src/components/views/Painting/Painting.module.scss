@@ -18,7 +18,7 @@
     margin: 20px;
   }
 
-  .description {
+  .about {
     padding: 10px;
     padding-bottom: 25px;
     width: 70%;
@@ -33,13 +33,24 @@
       margin: 5px 0;
     }
 
-    .price, .description {
+    .description {
+      width: 70%;
+      text-align: justify;
+    }
+
+    .author, .price, .description {
       margin: 0 10px 10px 0;
       font-size: 15px;
       font-family: $text-font;
       color: $text-color;
       align-self: center;
-      text-align: center;
+    }
+
+    .author {
+      margin-bottom: 25px;
+      text-align: end;
+      padding-right: 2%;
+      width: 100%;
     }
 
     .price {

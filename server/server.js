@@ -27,13 +27,14 @@ app.use('/api', (req, res) => {
 app.use(express.static(path.join(__dirname, '/uploads')));
 
 /* REACT WEBSITE */
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/Paint', { useNewUrlParser: true, useUnifiedTopology: true });
+const dbURI = process.env.NODE_ENV === 'production' ? `mongodb+srv://${process.env.user}:${process.env.password}@cluster0.no735.mongodb.net/Paint?retryWrites=true&w=majority` : 'mongodb://localhost:27017/Paint';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
