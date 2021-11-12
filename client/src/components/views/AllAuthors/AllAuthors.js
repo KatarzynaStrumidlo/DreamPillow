@@ -12,7 +12,7 @@ import { getAll, fetchAllAuthors } from '../../../redux/authorsRedux';
 
 import styles from './AllAuthors.module.scss';
 
-const Component = ({className, allAuthors, fetchAllAuthors, loading}) => {
+const Component = ({ className, allAuthors, fetchAllAuthors, loading }) => {
 
   useEffect(() => {
     fetchAllAuthors();
@@ -33,6 +33,9 @@ const Component = ({className, allAuthors, fetchAllAuthors, loading}) => {
 
 Component.propTypes = {
   className: PropTypes.string,
+  allAuthors: PropTypes.arrayOf(PropTypes.object),
+  fetchAllAuthors: PropTypes.func,
+  loading: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

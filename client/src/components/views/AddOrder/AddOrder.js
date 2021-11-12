@@ -109,6 +109,10 @@ const Component = ({ className, addOrderRequest, allOrders, products, total }) =
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  addOrderRequest: PropTypes.func,
+  allOrders: PropTypes.arrayOf(PropTypes.object),
+  products: PropTypes.arrayOf(PropTypes.object),
+  total: PropTypes.number,
 };
 
 const mapStateToProps = state => ({

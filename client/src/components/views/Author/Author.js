@@ -13,7 +13,7 @@ import { getOne, fetchOneAuthor } from '../../../redux/authorsRedux';
 
 import styles from './Author.module.scss';
 
-const Component = ({className, author, fetchOneAuthor}) => {
+const Component = ({ className, author, fetchOneAuthor }) => {
 
   useEffect(() => {
     fetchOneAuthor();
@@ -33,6 +33,8 @@ const Component = ({className, author, fetchOneAuthor}) => {
 
 Component.propTypes = {
   className: PropTypes.string,
+  author: PropTypes.object,
+  fetchOneAuthor: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

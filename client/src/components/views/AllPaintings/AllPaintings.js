@@ -12,7 +12,7 @@ import { getAll, fetchAllPaintings } from '../../../redux/paintingsRedux';
 
 import styles from './AllPaintings.module.scss';
 
-const Component = ({className, allPantings, fetchPaintings, loading}) => {
+const Component = ({ className, allPantings, fetchPaintings, loading }) => {
 
   useEffect(() => {
     fetchPaintings();
@@ -34,6 +34,9 @@ const Component = ({className, allPantings, fetchPaintings, loading}) => {
 
 Component.propTypes = {
   className: PropTypes.string,
+  allPantings: PropTypes.arrayOf(PropTypes.object),
+  fetchPaintings: PropTypes.func,
+  loading: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

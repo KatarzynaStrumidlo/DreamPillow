@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 
 import styles from './NotFound.module.scss';
 
-const Component = ({className}) => (
+const Component = ({ className }) => (
   <div className={clsx(className, styles.root)}>
-    <h2 className={clsx(className, styles.title)}>Not Found</h2>
-    <Link className ={clsx(className, styles.button)} to={'/'}>Back to homepage</Link>
+    <h2 className={clsx(className, styles.error)}>404</h2>
+    <h2 className={clsx(className, styles.title)}>Page Not Found...</h2>
   </div>
 );
 

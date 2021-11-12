@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import { API_URL } from '../../../config';
@@ -22,10 +22,10 @@ const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart
 
   const isInCart = () => {
     if(paintingsInCart.includes(painting._id)){
-      alert('This painting is already in cart')
+      alert('This painting is already in cart');
     } else {
-        addToCart(painting)
-        setInCart()
+        addToCart(painting);
+        setInCart();
       }
     };
 
@@ -47,6 +47,11 @@ const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart
 
 Component.propTypes = {
   className: PropTypes.string,
+  painting: PropTypes.object,
+  fetchOnePainting: PropTypes.func,
+  addToCart: PropTypes.func,
+  setInCart: PropTypes.func,
+  paintingsInCart: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = (state) => ({

@@ -32,6 +32,7 @@ const Component = ({ className, numberOfProducts }) => {
 
 Component.propTypes = {
   className: PropTypes.string,
+  numberOfProducts: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({

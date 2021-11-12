@@ -49,6 +49,11 @@ const Component = ({ className, products, total, fetchAllPaintings, removeFromCa
 
 Component.propTypes = {
   className: PropTypes.string,
+  products: PropTypes.arrayOf(PropTypes.object),
+  total: PropTypes.number,
+  fetchAllPaintings: PropTypes.func,
+  removeFromCart: PropTypes.func,
+  numberOfProducts: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({
