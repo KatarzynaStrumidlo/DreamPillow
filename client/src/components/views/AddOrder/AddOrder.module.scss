@@ -160,4 +160,16 @@
       }
     }
   }
+  .payment {
+    width: 70%;
+    margin: 20px auto 50px auto;
+
+    .paymentDetail {
+      font-family: $title-font;
+      color: $text-color;
+      text-align: center;
+      font-size: 18px;
+      margin: 10px;
+    }
+  }
 

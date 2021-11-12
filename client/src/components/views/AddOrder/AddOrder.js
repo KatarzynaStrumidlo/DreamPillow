@@ -102,6 +102,14 @@ const Component = ({ className, addOrderRequest, allOrders, products, total }) =
         </div>
         <button className={clsx(className,styles.button)} type="submit">Order</button>
       </form>
+      <div className={clsx(className, styles.payment)}>
+        <p className={clsx(className, styles.paymentDetail)}>Please make the payment to the bank account:</p>
+        <p className={clsx(className, styles.paymentDetail)}>27 9302 1027 8777 7195 8730 1106</p>
+        <p className={clsx(className, styles.paymentDetail)}>Paint</p>
+        <p className={clsx(className, styles.paymentDetail)}>125 Lexington Ave</p>
+        <p className={clsx(className, styles.paymentDetail)}>New York NY 10016</p>
+        <p className={clsx(className, styles.paymentDetail)}>The shipment will take place after the payment is received.</p>
+      </div>
     </div>
   );
 }
