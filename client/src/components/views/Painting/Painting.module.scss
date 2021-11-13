@@ -1,5 +1,11 @@
 @import '../../../styles/settings.scss';
 
+@mixin mobile {
+  @media (max-width: #{768px - 1px}) {
+    @content;
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -24,6 +30,10 @@
     width: 70%;
     display: flex;
     flex-direction: column;
+
+    @include mobile {
+      width: 98%;
+    }
 
     .title {
       color: $title-color;
@@ -75,6 +85,10 @@
       margin-right: 30px;
       text-align: end;
       align-self: flex-end;
+
+      @include mobile {
+        width: 40%;
+      }
     }
   }
 }

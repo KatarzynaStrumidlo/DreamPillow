@@ -34,7 +34,6 @@ const Component = ({ className, painting, fetchOnePainting, addToCart, setInCart
       {painting.picture && <img className={clsx(className, styles.picture)} src={`${API_URL}images/${painting.picture}`} alt='' /> }
       <div className={clsx(className, styles.about)}>
         <Link className={clsx(className, styles.back)} to={'/paintings'}><ArrowBackIosIcon /></Link>
-
         <h3 className={clsx(className, styles.title)}>{painting.title}</h3>
         <p className={clsx(className, styles.description)}>{painting.description}</p>
         <p className={clsx(className, styles.author)}>{painting.author}</p>

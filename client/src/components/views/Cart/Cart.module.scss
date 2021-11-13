@@ -1,5 +1,11 @@
 @import '../../../styles/settings.scss';
 
+@mixin mobile {
+  @media (max-width: #{768px - 1px}) {
+    @content;
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -9,6 +15,10 @@
   width: 60%;
   margin-top: 50px;
   border-top: $tab-color solid 1px;
+
+  @include mobile {
+    width: 98%;
+  }
 }
 
 .empty {
@@ -34,11 +44,20 @@
       color: $logo-color;
       cursor: pointer;
     }
+
+    @include mobile {
+      font-size: 40px;
+    }
   }
 
   .picture {
     width: 10%;
     height: 10%;
+
+    @include mobile {
+      width: 20%;
+      height: 20%;
+    }
   }
 
   .description {
@@ -55,6 +74,13 @@
       color: $text-color;
       margin-left: 70px;
       padding-left: 5px;
+
+      @include mobile {
+       margin-left: 20px;
+       padding-left: 0;
+       font-size: 12px;
+       text-align: center;
+      }
     }
     .price {
       margin-right: 15%;
@@ -69,12 +95,23 @@
   font-family: $text-font;
   font-size: 15px;
 
+  @include mobile {
+    p {
+      font-size: 14px;
+    }
+  }
+
   .order {
     background-color: $tab-color;
     border-radius: 5%;
     padding: 10px 30px;
     color: $main-color;
     text-decoration: none;
+
+    @include mobile {
+      padding: 5px 15px;
+      font-size: 10px;
+    }
 
     &:hover {
       cursor: pointer;
