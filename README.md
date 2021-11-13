@@ -1,19 +1,19 @@
 ## To instal project
 
 **in first terminal**
-- `cd server`
- - `yarn install`
+1. `cd server`
+2. `yarn install`
 
 **in second terminal**
-- `cd client`
- - `yarn instal`
+1. `cd client`
+2. `yarn instal`
 
 ## To run project
 
 **in first terminal**
-- `cd server`
- - `yarn start`
+1. `cd server`
+2. `yarn start`
 
 **in second terminal**
-- `cd client`
- - `yarn start`
+1. `cd client`
+2. `yarn start`
