@@ -1,9 +1,19 @@
 @import '../../../styles/settings.scss';
 
+@mixin mobile {
+  @media (max-width: #{768px - 1px}) {
+    @content;
+  }
+}
+
 .root {
   margin: auto;
   width: 70%;
   text-align: center;
+
+  @include mobile {
+    width: 98%;
+  }
 
   .header {
     font-family: $title-font;
@@ -25,12 +35,21 @@
     padding: 20px 0 10px 0;
     margin: auto;
     border-bottom:  $tab-color solid 1px;
+
+    @include mobile {
+      width: 98%;
     }
+  }
 
     .picture {
       width: 10%;
       height: 10%;
       margin-left: 5%;
+
+      @include mobile {
+        width: 20%;
+        height: 20%;
+      }
     }
 
     .description {
@@ -47,6 +66,13 @@
         color: $text-color;
         margin-left: 70px;
         padding-left: 5px;
+
+        @include mobile {
+          margin-left: 20px;
+          padding-left: 0;
+          font-size: 12px;
+          text-align: center;
+         }
       }
 
       .price {
@@ -58,6 +84,11 @@
     text-align: end;
     width: 100%;
     padding-right: 15%;
+
+    @include mobile {
+      font-size: 15px;
+
+    }
   }
 
   .addForm {
@@ -67,19 +98,6 @@
     padding: 10px 0 0 0;
     margin-bottom: 40px;
 
-    h4 {
-      font-family: $title-font;
-      font-size: 20px;
-      color: $title-color;
-      margin: 5px;
-      margin-top: 20px;
-      padding: 0;
-      width: 70%;
-      text-align: left;
-      font-weight: lighter;
-      border-bottom: $tab-color solid 1px;
-    }
-
     input {
       border: none;
       height: 30px;
@@ -88,6 +106,10 @@
       font-family: $title-font;
       font-size: 20px;
       color: $text-color;
+
+      @include mobile {
+       font-size: 15px;
+      }
     }
 
     .formInput {
@@ -101,6 +123,11 @@
     .icon {
       height: 20px;
       width: 20px;
+
+      @include mobile {
+        width: 15px;
+        height: 15px;
+      }
     }
 
     .formInput {
@@ -112,6 +139,10 @@
       display: flex;
       width: 75%;
       flex-direction: column;
+
+      @include mobile {
+        width: 90%;
+      }
 
       .personName {
         display: flex;
@@ -128,6 +159,10 @@
       flex-direction: column;
       width: 75%;
       margin-top: 40px;
+
+      @include mobile {
+        width: 90%;
+      }
 
       .street {
         display: flex;
@@ -154,6 +189,11 @@
       font-size: 15px;
       margin: 20px 0;
 
+      @include mobile {
+        padding: 8px 18px;
+        font-size: 13px;
+      }
+
       &:hover {
         cursor: pointer;
         background-color: $logo-color;
@@ -170,6 +210,11 @@
       text-align: center;
       font-size: 18px;
       margin: 10px;
+
+      @include mobile {
+        width: 95%;
+        font-size: 15px;
+      }
     }
   }
 

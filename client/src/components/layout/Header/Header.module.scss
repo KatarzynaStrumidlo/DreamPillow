@@ -1,5 +1,10 @@
 @import '../../../styles/settings.scss';
 
+@mixin mobile {
+  @media (max-width: #{768px - 1px}) {
+    @content;
+  }
+}
 
   .appBar {
     background-color: $main-color;
@@ -12,8 +17,19 @@
     justify-content: space-around;
     box-shadow: none;
 
+    @include mobile {
+      justify-content: space-between;
+    }
+
     .logo {
       width: 40%;
+
+      @include mobile {
+        width: 30%;
+        img{
+          width: 100px;
+        }
+      }
     }
 
     .tabs {
@@ -43,6 +59,11 @@
       color: $tab-color;
       margin: 0 5px 0 60px;
 
+      @include mobile {
+        margin: 0 5px 0 20px;
+        padding: 0;
+      }
+
       &:hover {
         color: $logo-color;
       }
@@ -51,6 +72,10 @@
     .numberOfProducts {
       font-family: $title-font;
       color: $tab-color;
+
+      @include mobile {
+        margin-right: 10px;
+      }
     }
   }
 
