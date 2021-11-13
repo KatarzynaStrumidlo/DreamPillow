@@ -1,8 +1,8 @@
 ## To instal project
 
 **in first terminal**
-`cd server`
-`yarn install`
+- `cd server`
+- `yarn install`
 
 **in second terminal**
 `cd client`
